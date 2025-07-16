@@ -770,3 +770,75 @@ main {
     }
   }
   
+  /* Styles pour le slider d'images */
+  .image-slider {
+    width: 100%;
+    position: relative;
+  }
+  
+  .slide-item {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+  }
+  
+  .slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .slide-caption h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .slide-caption p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+  
+  /* Styles pour les points de navigation */
+  .slick-dots {
+    bottom: 20px;
+  }
+  
+  .slick-dots li button:before {
+    color: white;
+    opacity: 0.5;
+    font-size: 10px;
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #28a745;
+    opacity: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .slide-item {
+      height: 350px;
+    }
+    
+    .slide-caption {
+      padding: 15px;
+    }
+    
+    .slide-caption h3 {
+      font-size: 1.5rem;
+    }
+    
+    .slide-caption p {
+      font-size: 1rem;
+    }
+  }

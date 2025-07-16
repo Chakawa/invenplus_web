@@ -26,7 +26,7 @@
     <div class="container">
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center flex-grow-1">
-                <a class="navbar-brand text-success me-4 d-flex align-items-center" href="../index.html">
+                <a class="navbar-brand text-success me-4 d-flex align-items-center" href="index.html">
                     <img src="../assets/logo.jpg" alt="logo" width="70" class="me-2" />
                     <div class="d-flex flex-column">
                       <span class="fw-bold fs-4">INVENP+</span>
@@ -51,10 +51,10 @@
             
             <!-- Espaces (desktop only) -->
             <div class="d-none d-lg-flex">
-                <a href="#" class="text-dark me-3 fw-bold">
+                <a href="recrutement-login.html" class="text-dark me-3 fw-bold">
                     <i class="fas fa-user-tie me-1"></i> Espace recrutement
                 </a>
-                <a href="#" class="text-dark fw-bold">
+                <a href="partenaire-login.html" class="text-dark fw-bold">
                     <i class="fas fa-handshake me-1"></i> Espace partenaire
                 </a>
             </div>
@@ -67,7 +67,7 @@
       <div class="container">
           <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                  <a class="nav-link" href="../index.html"><i class="fas fa-home me-1"></i> Accueil</a>
+                  <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Accueil</a>
               </li>
               <li class="nav-item">
                   <a class="nav-link active" href="presentation.html"><i class="fas fa-hand-holding-medical me-1"></i> Prestation</a>
@@ -91,7 +91,7 @@
                   <a class="nav-link" href="#"><i class="fas fa-phone me-1"></i> Contact</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fas fa-user me-1"></i> Connexion</a>
+                  <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Connexion</a>
               </li>
           </ul>
       </div>
@@ -111,12 +111,12 @@
               <h6 class="text-uppercase text-muted small fw-bold mb-3">Espaces</h6>
               <ul class="nav flex-column">
                   <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="recrutement-login.html">
                           <i class="fas fa-user-tie text-success"></i> Recrutement
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="partenaire-login.html">
                           <i class="fas fa-handshake text-success"></i> Partenaire
                       </a>
                   </li>
@@ -127,7 +127,7 @@
           <h6 class="text-uppercase text-muted small fw-bold mb-3">Navigation</h6>
           <ul class="nav flex-column">
               <li class="nav-item">
-                  <a class="nav-link" href="../index.html">
+                  <a class="nav-link" href="index.html">
                       <i class="fas fa-home text-success"></i> Accueil
                   </a>
               </li>
@@ -167,7 +167,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="login.html">
                     <i class="fas fa-user text-success"></i> Connexion
                   </a>
                 </li>
@@ -656,80 +656,5 @@
       });
     });
   </script>
-
-  <style>
-    /* Styles pour le slider d'images */
-    .image-slider {
-      width: 100%;
-      position: relative;
-    }
-    
-    .slide-item {
-      position: relative;
-      height: 500px;
-      overflow: hidden;
-    }
-    
-    .slide-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .slide-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      padding: 30px;
-      text-align: center;
-    }
-    
-    .slide-caption h3 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    
-    .slide-caption p {
-      font-size: 1.2rem;
-      margin-bottom: 0;
-    }
-    
-    /* Styles pour les points de navigation */
-    .slick-dots {
-      bottom: 20px;
-    }
-    
-    .slick-dots li button:before {
-      color: white;
-      opacity: 0.5;
-      font-size: 10px;
-    }
-    
-    .slick-dots li.slick-active button:before {
-      color: #28a745;
-      opacity: 1;
-    }
-    
-    @media (max-width: 768px) {
-      .slide-item {
-        height: 350px;
-      }
-      
-      .slide-caption {
-        padding: 15px;
-      }
-      
-      .slide-caption h3 {
-        font-size: 1.5rem;
-      }
-      
-      .slide-caption p {
-        font-size: 1rem;
-      }
-    }
-  </style>
 </body>
 </html>
