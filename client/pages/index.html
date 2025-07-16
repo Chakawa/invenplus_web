@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InventPlus - Votre Pharmacie Près de Vous</title>
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+</head>
+<body>
+
+  <!-- Top Navbar -->
+    <!-- Top Navbar -->
+    <div class="top-navbar py-2 sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center flex-grow-1">
+                    <a class="navbar-brand text-success me-4 d-flex align-items-center" href="#">
+                        <img src="../assets/logo.jpg" alt="logo" width="70" class="me-2" />
+                        <div class="d-flex flex-column">
+                          <span class="fw-bold fs-4">INVENP+</span>
+                          <small class="text-muted fst-italic" style="font-size: 0.85rem;">Pour Toi, On Est Là</small>
+                        </div>
+                      </a>
+                    <!-- Barre de recherche -->
+                    <div class="search-box d-flex flex-grow-1 me-2">
+                        <input class="form-control" type="search" placeholder="Recherche un produit...">
+                        <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                    
+                    <!-- Menu Burger (mobile only) -->
+                    <div class="d-flex d-lg-none align-items-center">
+                        <button class="navbar-toggler p-0 border-0" type="button" 
+                                data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                                aria-controls="mobileMenu">
+                            <i class="fas fa-bars fs-4"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Espaces (desktop only) -->
+                <div class="d-none d-lg-flex">
+                    <a href="../pages/recrutement-login.html" class="text-dark me-3 fw-bold">
+                        <i class="fas fa-user-tie me-1"></i> Espace recrutement
+                    </a>
+                    <a href="../pages/partenaire-login.html" class="text-dark fw-bold">
+                        <i class="fas fa-handshake me-1"></i> Espace partenaire
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Secondary Navbar (desktop only) -->
+    <nav class="navbar navbar-expand-lg secondary-navbar d-none d-lg-block">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="fas fa-home me-1"></i> Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="presentation.html"><i class="fas fa-hand-holding-medical me-1"></i> Prestation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-store me-1"></i> Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-file-invoice-dollar me-1"></i> Devis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-star me-1"></i> Avis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-boxes me-1"></i> Stock</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-envelope me-1"></i> Messagerie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-phone me-1"></i> Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Connexion</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Menu Mobile (Offcanvas) -->
+    <div class="offcanvas offcanvas-end offcanvas-nav" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header border-bottom">
+            <h5 class="offcanvas-title text-success">
+                <i class="fas fa-plus-circle me-2"></i>INVENP+
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Section Espaces -->
+            <div class="mb-4">
+                <h6 class="text-uppercase text-muted small fw-bold mb-3">Espaces</h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/recrutement-login.html">
+                            <i class="fas fa-user-tie text-success"></i> Recrutement
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/partenaire-login.html">
+                            <i class="fas fa-handshake text-success"></i> Partenaire
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Menu Principal -->
+            <h6 class="text-uppercase text-muted small fw-bold mb-3">Navigation</h6>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        <i class="fas fa-home text-success"></i> Accueil
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="presentation.html">
+                        <i class="fas fa-hand-holding-medical text-success"></i> Prestation
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-store text-success"></i> Shop
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-file-invoice-dollar text-success"></i> Devis
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-star text-success"></i> Avis
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-boxes text-success"></i> Stock
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-envelope text-success"></i> Messagerie
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-phone text-success"></i> Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-shopping-cart text-success"></i> Panier
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">
+                      <i class="fas fa-user text-success"></i> Connexion
+                    </a>
+                  </li>
+            </ul>
+        </div>
+    </div>
+
+  <!-- Hero Banner -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-6 animate">
+              <h6 class="text-success fw-bold mb-3"><i class="fas fa-tag me-2"></i>ÉCONOMISEZ 10 - 20%</h6>
+              <h1 class="display-4 fw-bold mb-4">Votre Pharmacie <br><span class="brand-green">À Portée de Main</span></h1>
+              <p class="lead mb-4">Trouvez vos médicaments en un clic, comparez les prix et trouvez la pharmacie la plus proche.</p>
+              <div class="d-flex gap-3">
+                  <a href="#" class="btn btn-success btn-lg px-4 py-3">Acheter Maintenant <i class="fas fa-arrow-right ms-2"></i></a>
+                  <a href="#" class="btn btn-outline-dark btn-lg px-4 py-3">Voir les Promotions</a>
+              </div>
+          </div>
+          <div class="col-lg-6 animate delay-1">
+              <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 shadow-lg" alt="Pharmacie">
+          </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Présentation du site -->
+  <section class="py-6 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+          <div class="col-lg-10 text-center animate delay-1">
+              <h2 class="fw-bold mb-4 text-success">Découvrez <span class="text-dark">InvenPlus</span></h2>
+              <p class="lead mb-5">
+                  InvenPlus révolutionne l'accès aux produits pharmaceutiques en Côte d'Ivoire. Notre plateforme connecte les pharmacies et les patients pour une expérience simplifiée et transparente.
+              </p>
+              
+              <div class="row g-4 text-start">
+                  <div class="col-md-4 animate delay-2">
+                      <div class="p-4 bg-white rounded-3 h-100 shadow-sm">
+                          <i class="fas fa-pills service-icon"></i>
+                          <h4>Disponibilité en temps réel</h4>
+                          <p>Vérifiez la disponibilité des médicaments dans les pharmacies près de chez vous.</p>
+                      </div>
+                  </div>
+                  <div class="col-md-4 animate delay-2">
+                      <div class="p-4 bg-white rounded-3 h-100 shadow-sm">
+                          <i class="fas fa-chart-line service-icon"></i>
+                          <h4>Gestion de stock</h4>
+                          <p>Outils complets pour les pharmacies pour optimiser leur gestion d'inventaire.</p>
+                      </div>
+                  </div>
+                  <div class="col-md-4 animate delay-2">
+                      <div class="p-4 bg-white rounded-3 h-100 shadow-sm">
+                          <i class="fas fa-handshake service-icon"></i>
+                          <h4>Réseau partenaires</h4>
+                          <p>Connectez-vous avec des professionnels de santé et des fournisseurs.</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nos Services -->
+  <section class="py-6 bg-white">
+    <div class="container">
+      <h2 class="text-center text-success fw-bold mb-5 animate">Nos Services Exclusifs</h2>
+      <div class="row text-center g-4">
+        <div class="col-md-3 animate delay-1">
+          <div class="p-4 border rounded-3 h-100 transition-all hover-shadow">
+            <i class="fas fa-clipboard-check service-icon"></i>
+            <h5 class="mt-2 fw-bold">Audit Stock</h5>
+            <p class="text-muted">Analyse complète de votre inventaire avec recommandations.</p>
+            <a href="#" class="btn btn-sm btn-outline-success">En savoir plus</a>
+          </div>
+        </div>
+        <div class="col-md-3 animate delay-1">
+          <div class="p-4 border rounded-3 h-100 transition-all hover-shadow">
+            <i class="fas fa-shopping-bag service-icon"></i>
+            <h5 class="mt-2 fw-bold">Boutique en ligne</h5>
+            <p class="text-muted">Achetez vos produits de parapharmacie en quelques clics.</p>
+            <a href="#" class="btn btn-sm btn-outline-success">En savoir plus</a>
+          </div>
+        </div>
+        <div class="col-md-3 animate delay-2">
+          <div class="p-4 border rounded-3 h-100 transition-all hover-shadow">
+            <i class="fas fa-user-md service-icon"></i>
+            <h5 class="mt-2 fw-bold">Recrutement</h5>
+            <p class="text-muted">Trouvez le personnel qualifié pour votre pharmacie.</p>
+            <a href="#" class="btn btn-sm btn-outline-success">En savoir plus</a>
+          </div>
+        </div>
+        <div class="col-md-3 animate delay-2">
+          <div class="p-4 border rounded-3 h-100 transition-all hover-shadow">
+            <i class="fas fa-map-marker-alt service-icon"></i>
+            <h5 class="mt-2 fw-bold">Pharmacie Proche</h5>
+            <p class="text-muted">Localisez les pharmacies ayant vos médicaments en stock.</p>
+            <a href="#" class="btn btn-sm btn-outline-success">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section E-Para -->
+  <section class="py-6 bg-light">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-5 animate">
+        <h2 class="fw-bold text-success mb-0">Nos Produits Phares</h2>
+        <a href="#" class="btn btn-outline-success">Voir tout <i class="fas fa-arrow-right ms-2"></i></a>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-3 animate delay-1">
+          <div class="card h-100">
+            <span class="badge bg-success position-absolute m-2">-20%</span>
+            <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Produit 1">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Parapharmacie</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+              <h5 class="card-title">Vitamine C Boost</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <span class="text-success fw-bold">12.500 FCFA</span>
+                  <span class="text-decoration-line-through text-muted small ms-2">15.000 FCFA</span>
+                </div>
+                <button class="btn btn-sm btn-success"><i class="fas fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-3 animate delay-1">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1592417817098-8fd3d9eb14a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Produit 2">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Soin du visage</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <h5 class="card-title">Crème Hydratante</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-success fw-bold">8.900 FCFA</span>
+                <button class="btn btn-sm btn-success"><i class="fas fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-3 animate delay-2">
+          <div class="card h-100">
+            <span class="badge bg-danger position-absolute m-2">Nouveau</span>
+            <img src="https://images.unsplash.com/photo-1552904211-c0f4a60c9b0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Produit 3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Complément alimentaire</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+              <h5 class="card-title">Oméga 3 Premium</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-success fw-bold">15.750 FCFA</span>
+                <button class="btn btn-sm btn-success"><i class="fas fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-3 animate delay-2">
+          <div class="card h-100">
+            <img src="https://images.unsplash.com/photo-1598518619776-eae3f8a34eac?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Produit 4">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">Hygiène</span>
+                <div class="text-warning">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+              <h5 class="card-title">Gel Douche Relaxant</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-success fw-bold">4.500 FCFA</span>
+                <button class="btn btn-sm btn-success"><i class="fas fa-cart-plus"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Témoignages -->
+  <section class="py-6 bg-white">
+    <div class="container">
+      <h2 class="text-center text-success fw-bold mb-5 animate">Ce Que Disent Nos Clients</h2>
+      
+      <div class="row g-4">
+        <div class="col-md-4 animate delay-1">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <div class="d-flex mb-3">
+                <img src="https://randomuser.me/api/portraits/women/43.jpg" class="rounded-circle me-3" width="50" alt="Client">
+                <div>
+                  <h6 class="mb-0">Aïcha K.</h6>
+                  <small class="text-muted">Abidjan</small>
+                </div>
+              </div>
+              <div class="text-warning mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="mb-0">"Grâce à InvenPlus, j'ai pu trouver le médicament rare dont ma mère avait besoin, et dans une pharmacie proche de chez moi. Un gain de temps incroyable!"</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 animate delay-2">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <div class="d-flex mb-3">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" alt="Client">
+                <div>
+                  <h6 class="mb-0">Jean-Paul D.</h6>
+                  <small class="text-muted">Pharmacien à Yopougon</small>
+                </div>
+              </div>
+              <div class="text-warning mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="mb-0">"La gestion de stock est devenue tellement plus simple avec InvenPlus. Et j'ai pu recruter deux préparateurs qualifiés via leur plateforme."</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4 animate delay-3">
+          <div class="card border-0 shadow-sm h-100">
+            <div class="card-body p-4">
+              <div class="d-flex mb-3">
+                <img src="https://randomuser.me/api/portraits/women/65.jpg" class="rounded-circle me-3" width="50" alt="Client">
+                <div>
+                  <h6 class="mb-0">Fatou B.</h6>
+                  <small class="text-muted">Bouaké</small>
+                </div>
+              </div>
+              <div class="text-warning mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <p class="mb-0">"J'adore la boutique en ligne. Les produits de parapharmacie sont de qualité et livrés rapidement. Je recommande!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-6 bg-success text-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 text-center animate">
+          <h2 class="fw-bold mb-4">Restez Informés</h2>
+          <p class="mb-5">Abonnez-vous à notre newsletter pour recevoir les dernières actualités, promotions et conseils santé.</p>
+          
+          <form class="row g-2 justify-content-center">
+            <div class="col-md-8">
+              <input type="email" class="form-control form-control-lg" placeholder="Votre adresse email">
+            </div>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-dark btn-lg w-100">S'abonner</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-6 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 animate">
+          <h4 class="text-success mb-4"><i class="fas fa-plus-circle me-2"></i>INVENP+</h4>
+          <p class="mb-4">Plateforme innovante connectant patients et pharmacies pour un accès facilité aux médicaments et services pharmaceutiques.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white fs-5"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white fs-5"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white fs-5"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white fs-5"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 animate delay-1">
+          <h5 class="mb-4">Liens Rapides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Boutique</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Recrutement</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Partenaires</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 animate delay-1">
+          <h5 class="mb-4">Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Disponibilité médicaments</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Comparaison de prix</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Audit de stock</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">E-parapharmacie</a></li>
+            <li class="mb-2"><a href="#" class="text-white text-decoration-none">Conseils santé</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-4 animate delay-2">
+          <h5 class="mb-4">Contactez-nous</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex">
+              <i class="fas fa-map-marker-alt text-success mt-1 me-3"></i>
+              <span>Plateau, Rue des Pharmacies, Abidjan, Côte d'Ivoire</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-phone text-success mt-1 me-3"></i>
+              <span>+225 01 23 45 67 89</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-envelope text-success mt-1 me-3"></i>
+              <span>contact@invenplus.ci</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-clock text-success mt-1 me-3"></i>
+              <span>Lun-Sam: 8h00-18h00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-4 border-secondary">
+      
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2023 INVENP+. Tous droits réservés.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white text-decoration-none me-3">Conditions d'utilisation</a>
+          <a href="#" class="text-white text-decoration-none">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Gestion de l'offcanvas mobile
+      const offcanvas = document.getElementById('mobileMenu');
+      if (offcanvas) {
+        offcanvas.addEventListener('show.bs.offcanvas', function() {
+          this.style.transform = 'translateX(0)';
+        });
+        offcanvas.addEventListener('hide.bs.offcanvas', function() {
+          this.style.transform = 'translateX(100%)';
+        });
+      }
+    
+      // Animation au scroll
+      const animateElements = document.querySelectorAll('.animate');
+      if (animateElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1 });
+    
+        animateElements.forEach(el => {
+          el.style.opacity = 0;
+          el.style.transform = 'translateY(20px)';
+          el.style.transition = 'all 0.6s ease-out';
+          observer.observe(el);
+        });
+      }
+    
+      // Fermeture du menu mobile après clic
+      const mobileLinks = document.querySelectorAll('.offcanvas-body .nav-link');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvas);
+          if (offcanvasInstance) {
+            offcanvasInstance.hide();
+          }
+        });
+      });
+    });
+    </script>
+</body>
+</html>

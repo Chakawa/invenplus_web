@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InvenPlus - Espace Recrutement Étudiants</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --primary-light: #3d566e;
+      --secondary: #28a745; /* Changé en vert */
+      --success: #28a745;
+      --light: #f8f9fa;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f7fa;
+    }
+    
+    .student-auth-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px; /* Ajouté pour l'alignement mobile */
+    }
+    
+    .student-auth-card {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border: none;
+    }
+    
+    .student-auth-left {
+      background: linear-gradient(135deg, #28a745, #1e7e34); /* Changé en vert */
+      color: white;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .student-auth-left::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+    }
+    
+    .student-auth-left-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .student-auth-left h2 {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .student-features {
+      list-style: none;
+      padding: 0;
+      margin-top: 2rem;
+    }
+    
+    .student-features li {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .student-features i {
+      background-color: rgba(255, 255, 255, 0.2);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+    
+    .student-auth-right {
+      background: white;
+      padding: 3rem;
+    }
+    
+    .student-logo-brand {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    
+    .student-logo-brand img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    
+    .student-logo-text h3 {
+      font-weight: 700;
+      margin-bottom: 0;
+      color: var(--primary);
+    }
+    
+    .student-logo-text small {
+      color: var(--primary-light);
+      font-style: italic;
+    }
+    
+    .student-form-control {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      background-color: #f8f9fa;
+    }
+    
+    .student-form-control:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Changé en vert */
+      background-color: white;
+    }
+    
+    .student-btn-primary {
+      background-color: var(--secondary);
+      border: none;
+      padding: 12px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+    
+    .student-btn-primary:hover {
+      background-color: #218838; /* Vert plus foncé */
+    }
+    
+    .student-auth-switch {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    .student-auth-switch a {
+      color: var(--secondary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    
+    .student-divider {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+    }
+    
+    .student-divider::before, .student-divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .student-divider-text {
+      padding: 0 10px;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+    
+    .student-badge {
+      background-color: var(--light);
+      border-radius: 20px;
+      padding: 5px 15px;
+      display: inline-block;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-weight: 500;
+    }
+    
+    .student-required-field::after {
+      content: " *";
+      color: #dc3545;
+    }
+    
+    .form-step {
+      display: none;
+    }
+    
+    .form-step.active {
+      display: block;
+    }
+    
+    .progress {
+      height: 8px;
+      margin-bottom: 2rem;
+    }
+    
+    /* Styles pour la version mobile */
+    .student-mobile-intro {
+      display: none;
+      background: linear-gradient(135deg, #28a745, #1e7e34); /* Vert InvenPlus */
+      color: white;
+      padding: 2rem 15px;
+      width: 100%;
+      margin: 0 auto;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .student-mobile-features .rounded-circle {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      color: white !important;
+    }
+    
+    @media (max-width: 992px) {
+      .student-auth-left {
+        padding: 2rem;
+      }
+      
+      .student-auth-right {
+        padding: 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .student-auth-left {
+        display: none;
+      }
+      
+      .student-mobile-intro {
+        display: block !important;
+      }
+      
+      .student-auth-card {
+        border-radius: 0;
+        box-shadow: none;
+      }
+      
+      .student-auth-right {
+        border-radius: 0 0 10px 10px;
+      }
+      
+      body {
+        padding-top: 0;
+        background-color: #f5f7fa;
+      }
+      
+      .container-fluid.min-vh-100 {
+        min-height: auto !important;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Section mobile (visible seulement sur petits écrans) -->
+  <div class="student-mobile-intro d-lg-none">
+    <div class="container px-0">
+      <h2><i class="fas fa-graduation-cap me-2"></i> Espace Recrutement Étudiants</h2>
+      <p class="mb-4">Trouvez des opportunités dans les pharmacies partenaires</p>
+      
+      <div class="student-mobile-features">
+        <div class="mb-3 d-flex align-items-center">
+          <div class="me-3">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <i class="fas fa-briefcase"></i>
+            </div>
+          </div>
+          <div>
+            <h5 class="mb-1">Offres de stage</h5>
+            <p class="small mb-0 opacity-75">Accédez à des centaines d'offres</p>
+          </div>
+        </div>
+        
+        <div class="mb-3 d-flex align-items-center">
+          <div class="me-3">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <i class="fas fa-user-tie"></i>
+            </div>
+          </div>
+          <div>
+            <h5 class="mb-1">Emplois étudiants</h5>
+            <p class="small mb-0 opacity-75">Travaillez dans votre domaine</p>
+          </div>
+        </div>
+        
+        <div class="d-flex align-items-center">
+          <div class="me-3">
+            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+              <i class="fas fa-network-wired"></i>
+            </div>
+          </div>
+          <div>
+            <h5 class="mb-1">Réseau professionnel</h5>
+            <p class="small mb-0 opacity-75">Connectez-vous avec des pharmaciens</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid min-vh-100 d-flex align-items-center">
+    <div class="student-auth-container">
+      <div class="student-auth-card">
+        <div class="row g-0">
+          <!-- Colonne de gauche (présentation) -->
+          <div class="col-lg-6 student-auth-left">
+            <div class="student-auth-left-content">
+              <h2>Espace Recrutement Étudiants</h2>
+              <p>Accédez à des opportunités de stage et d'emploi dans les pharmacies partenaires.</p>
+              
+              <ul class="student-features">
+                <li>
+                  <i class="fas fa-briefcase"></i>
+                  <div>
+                    <h5>Offres de stage</h5>
+                    <p class="small">Trouvez des stages adaptés à votre cursus universitaire</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-user-tie"></i>
+                  <div>
+                    <h5>Emplois étudiants</h5>
+                    <p class="small">Travaillez comme préparateur en pharmacie</p>
+                  </div>
+                </li>
+                <li>
+                  <i class="fas fa-network-wired"></i>
+                  <div>
+                    <h5>Réseau professionnel</h5>
+                    <p class="small">Connectez-vous avec des professionnels du secteur</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Colonne de droite (formulaire) -->
+          <div class="col-lg-6 student-auth-right">
+            <!-- Logo et marque -->
+            <div class="student-logo-brand">
+              <img src="../assets/logo.jpg" alt="InvenPlus Logo">
+              <div class="student-logo-text">
+                <h3>INVENP+ <span class="student-badge">Espace Étudiants</span></h3>
+                <small>Opportunités pour étudiants en pharmacie</small>
+              </div>
+            </div>
+            
+            <!-- Barre de progression -->
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" style="width: 33%; background-color: #28a745;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <!-- Formulaire d'inscription en plusieurs étapes -->
+            <form id="student-registration-form">
+              <!-- Étape 1 - Informations de base -->
+              <div class="form-step active" id="step1">
+                <h4 class="mb-4">Informations personnelles</h4>
+                
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="student-firstname" class="form-label student-required-field">Prénom</label>
+                    <input type="text" class="form-control student-form-control" id="student-firstname" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="student-lastname" class="form-label student-required-field">Nom</label>
+                    <input type="text" class="form-control student-form-control" id="student-lastname" required>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-email" class="form-label student-required-field">Email universitaire</label>
+                  <input type="email" class="form-control student-form-control" id="student-email" placeholder="prenom.nom@etudiant.univ-pharma.ci" required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-phone" class="form-label student-required-field">Téléphone</label>
+                  <input type="tel" class="form-control student-form-control" id="student-phone" placeholder="+225 XX XX XX XX" required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-birthdate" class="form-label student-required-field">Date de naissance</label>
+                  <input type="date" class="form-control student-form-control" id="student-birthdate" required>
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                  <button type="button" class="btn student-btn-primary next-step" data-next="step2">Suivant <i class="fas fa-arrow-right ms-2"></i></button>
+                </div>
+              </div>
+              
+              <!-- Étape 2 - Formation -->
+              <div class="form-step" id="step2">
+                <h4 class="mb-4">Votre formation</h4>
+                
+                <div class="mb-3">
+                  <label for="student-university" class="form-label student-required-field">Université/Faculté</label>
+                  <select class="form-select student-form-control" id="student-university" required>
+                    <option value="" selected disabled>Sélectionnez votre université</option>
+                    <option value="UFHB">UFHB - Université Félix Houphouët-Boigny</option>
+                    <option value="UNA">UNA - Université Nangui Abrogoua</option>
+                    <option value="Autre">Autre établissement</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3" id="other-university-container" style="display: none;">
+                  <label for="student-other-university" class="form-label student-required-field">Nom de l'établissement</label>
+                  <input type="text" class="form-control student-form-control" id="student-other-university">
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-year" class="form-label student-required-field">Année d'étude</label>
+                  <select class="form-select student-form-control" id="student-year" required>
+                    <option value="" selected disabled>Sélectionnez votre année</option>
+                    <option value="1">1ère année</option>
+                    <option value="2">2ème année</option>
+                    <option value="3">3ème année</option>
+                    <option value="4">4ème année</option>
+                    <option value="5">5ème année</option>
+                    <option value="6">6ème année</option>
+                    <option value="intern">Interne en pharmacie</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-specialty" class="form-label">Spécialité (optionnelle)</label>
+                  <input type="text" class="form-control student-form-control" id="student-specialty" placeholder="Ex: Pharmacie industrielle">
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-secondary prev-step" data-prev="step1">
+                    <i class="fas fa-arrow-left me-2"></i> Retour
+                  </button>
+                  <button type="button" class="btn student-btn-primary next-step" data-next="step3">
+                    Suivant <i class="fas fa-arrow-right ms-2"></i>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Étape 3 - Expérience et CV -->
+              <div class="form-step" id="step3">
+                <h4 class="mb-4">Votre profil professionnel</h4>
+                
+                <div class="mb-3">
+                  <label for="student-experience" class="form-label">Expérience (optionnelle)</label>
+                  <textarea class="form-control student-form-control" id="student-experience" rows="3" placeholder="Décrivez vos expériences en pharmacie, stages, etc."></textarea>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-skills" class="form-label">Compétences (optionnelle)</label>
+                  <textarea class="form-control student-form-control" id="student-skills" rows="2" placeholder="Listez vos compétences techniques"></textarea>
+                  <small class="text-muted">Séparez les compétences par des virgules</small>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-cv" class="form-label student-required-field">CV (PDF, max 2MB)</label>
+                  <input type="file" class="form-control student-form-control" id="student-cv" accept=".pdf" required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="student-motivation" class="form-label">Lettre de motivation (optionnelle)</label>
+                  <input type="file" class="form-control student-form-control" id="student-motivation" accept=".pdf,.doc,.docx">
+                </div>
+                
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="student-terms" required>
+                  <label class="form-check-label small" for="student-terms">J'accepte les <a href="#" class="text-primary">conditions d'utilisation</a> et la <a href="#" class="text-primary">politique de confidentialité</a></label>
+                </div>
+                
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-secondary prev-step" data-prev="step2">
+                    <i class="fas fa-arrow-left me-2"></i> Retour
+                  </button>
+                  <button type="submit" class="btn student-btn-primary">
+                    <i class="fas fa-user-plus me-2"></i> Finaliser l'inscription
+                  </button>
+                </div>
+              </div>
+            </form>
+            
+            <div class="student-auth-switch">
+              <span>Vous avez déjà un compte ? </span>
+              <a href="connexion-etudiants.html" class="text-primary">Connectez-vous</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      // Gestion des étapes du formulaire
+      $('.next-step').click(function() {
+        const currentStep = $(this).closest('.form-step');
+        const nextStepId = $(this).data('next');
+        
+        // Validation simple
+        let isValid = true;
+        currentStep.find('[required]').each(function() {
+          if (!$(this).val()) {
+            isValid = false;
+            $(this).addClass('is-invalid');
+          } else {
+            $(this).removeClass('is-invalid');
+          }
+        });
+        
+        if (isValid) {
+          currentStep.removeClass('active');
+          $('#' + nextStepId).addClass('active');
+          
+          // Mise à jour de la barre de progression
+          const progress = (nextStepId === 'step2') ? '66%' : '100%';
+          $('.progress-bar').css('width', progress);
+        }
+      });
+      
+      $('.prev-step').click(function() {
+        const currentStep = $(this).closest('.form-step');
+        const prevStepId = $(this).data('prev');
+        
+        currentStep.removeClass('active');
+        $('#' + prevStepId).addClass('active');
+        
+        // Mise à jour de la barre de progression
+        const progress = (prevStepId === 'step1') ? '33%' : '66%';
+        $('.progress-bar').css('width', progress);
+      });
+      
+      // Affichage conditionnel pour "autre université"
+      $('#student-university').change(function() {
+        if ($(this).val() === 'Autre') {
+          $('#other-university-container').show();
+          $('#student-other-university').attr('required', true);
+        } else {
+          $('#other-university-container').hide();
+          $('#student-other-university').removeAttr('required');
+        }
+      });
+      
+      // Soumission du formulaire
+      $('#student-registration-form').submit(function(e) {
+        e.preventDefault();
+        
+        // Ici vous ajouteriez le code pour envoyer les données au serveur
+        alert('Inscription réussie ! Un email de confirmation vous a été envoyé.');
+        // window.location.href = 'etudiant/dashboard.html';
+      });
+    });
+  </script>
+</body>
+</html>

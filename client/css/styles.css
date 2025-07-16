@@ -1,0 +1,772 @@
+/* Supprimer l'espace blanc et fixer la navbar */
+body {
+  padding-top: 0 !important; /* Supprime le padding-top */
+  margin: 0;
+}
+
+.top-navbar {
+  position: fixed; /* Change sticky en fixed */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  width: 100%;
+}
+
+/* Ajuster le contenu principal */
+main {
+  margin-top: 70px; /* Hauteur de votre navbar */
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 991.98px) {
+  body {
+    padding-top: 0 !important;
+  }
+  
+  main {
+    margin-top: 60px; /* Ajustez selon la hauteur de votre navbar mobile */
+  }
+}
+
+
+:root {
+    --primary-color: #28a745;
+    --secondary-color: #343a40;
+    --accent-color: #ff6b6b;
+  }
+  
+  /* Base Styles */
+  body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    padding-top: 120px;
+  }
+  
+  /* Navbar Styles */
+  .navbar-brand {
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .top-navbar {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+  }
+  
+  .search-box {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .search-box input {
+    border: none;
+    padding: 10px 20px;
+  }
+  
+  .search-box button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    transition: all 0.3s;
+  }
+  
+  .search-box button:hover {
+    background: #218838;
+  }
+  
+  .qa-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 500;
+    margin-left: 15px;
+    transition: all 0.3s;
+  }
+  
+  .qa-btn:hover {
+    background: #e05555;
+    transform: translateY(-2px);
+  }
+  
+  /* Secondary Navbar */
+  .secondary-navbar {
+    background: var(--secondary-color);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+  }
+  
+  .secondary-navbar .nav-link {
+    color: white !important;
+    font-weight: 500;
+    padding: 12px 18px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .secondary-navbar .nav-link:hover {
+    color: var(--primary-color) !important;
+  }
+  
+  .secondary-navbar .nav-link.active {
+    color: var(--primary-color) !important;
+  }
+  
+  .secondary-navbar .nav-link:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+  }
+  
+  .secondary-navbar .nav-link:hover:after,
+  .secondary-navbar .nav-link.active:after {
+    width: 100%;
+    left: 0;
+  }
+  
+  /* Mobile Menu */
+  .offcanvas-nav {
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .offcanvas-header {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  
+  .offcanvas-body .nav-link {
+    padding: 12px 20px;
+    color: #333;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+  }
+  
+  .offcanvas-body .nav-link:hover {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--primary-color);
+  }
+  
+  .offcanvas-body .nav-link i {
+    width: 24px;
+    text-align: center;
+    margin-right: 10px;
+    color: var(--primary-color);
+  }
+  
+  .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-toggler:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 80px 0;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  
+  .brand-green {
+    color: var(--primary-color);
+  }
+  
+  /* Cards & Buttons */
+  .btn-outline-dark {
+    border: 2px solid;
+    font-weight: 500;
+    padding: 10px 25px;
+    transition: all 0.3s;
+  }
+  
+  .btn-outline-dark:hover {
+    background: var(--secondary-color);
+    color: white;
+  }
+  
+  .service-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: contain;
+    padding: 20px;
+    background: #f8f9fa;
+  }
+  
+  .btn-outline-success {
+    border: 2px solid;
+    font-weight: 500;
+  }
+  
+  /* Footer */
+  footer {
+    background: var(--secondary-color);
+  }
+  
+  footer a {
+    transition: all 0.3s;
+  }
+  
+  footer a:hover {
+    color: var(--primary-color) !important;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .animate {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  .delay-3 { animation-delay: 0.6s; }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 991.98px) {
+    body {
+      padding-top: 70px;
+    }
+    
+    .search-box {
+      margin-right: 10px;
+    }
+    
+    .secondary-navbar {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .offcanvas-nav {
+      display: none;
+    }
+    
+    .secondary-navbar .nav-item {
+      margin: 0 5px;
+    }
+    
+    .secondary-navbar .nav-link {
+      padding: 12px 20px;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .search-box {
+      width: 100%;
+      max-width: none;
+    }
+    
+    .navbar-brand {
+      min-width: 150px;
+      font-size: 1.5rem;
+    }
+  }
+  
+  /* Transitions */
+  .collapse {
+    transition: all 0.3s ease;
+  }
+
+  /* ===== STYLES PRESENTATION ===== */
+.prestation-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                url('https://images.unsplash.com/photo-1581092921461-39b2f2aa99d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 120px 0;
+    color: white;
+    position: relative;
+  }
+  
+  .min-vh-60 {
+    min-height: 60vh;
+  }
+  
+  /* Cartes Prestations */
+  .prestation-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .prestation-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .prestation-card .card-header {
+    border-radius: 0.5rem 0.5rem 0 0 !important;
+  }
+  
+  /* Cartes Fonctionnalités */
+  .feature-card {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+  
+  /* Témoignages */
+  .testimonial-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Navbar scroll */
+  .navbar-scrolled {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.98) !important;
+  }
+  
+  /* Responsive */
+  @media (max-width: 991.98px) {
+    .prestation-hero {
+      padding: 100px 0;
+      background-attachment: scroll;
+    }
+    
+    .min-vh-60 {
+      min-height: auto;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    .prestation-hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .prestation-card {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  :root {
+    --success: #28a745;
+    --success-light: #d4edda;
+    --dark: #343a40;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+  }
+  
+  .auth-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .auth-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auth-left {
+    background: linear-gradient(135deg, var(--success), #1e7e34);
+    color: white;
+    padding: 3rem;
+  }
+  
+  .auth-left h2 {
+    font-weight: 700;
+  }
+  
+  .auth-left ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .auth-left ul li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .auth-left ul li i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .auth-right {
+    background: white;
+    padding: 3rem;
+  }
+  
+  .logo-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .logo-brand img {
+    height: 50px;
+    margin-right: 15px;
+  }
+  
+  .logo-text h3 {
+    font-weight: 700;
+    margin-bottom: 0;
+    color: var(--success);
+  }
+  
+  .logo-text small {
+    color: var(--dark);
+    font-style: italic;
+  }
+  
+  .form-control {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .form-control:focus {
+    border-color: var(--success);
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+  }
+  
+  .btn-success {
+    background-color: var(--success);
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .auth-switch a {
+    color: var(--success);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+  
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .divider-text {
+    padding: 0 10px;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+  
+  .social-login .btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .social-login .btn i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .btn-google {
+    background-color: #fff;
+    color: #757575;
+    border: 1px solid #ddd;
+  }
+  
+  .btn-google:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .btn-facebook {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+  }
+  
+  .btn-facebook:hover {
+    background-color: #344e86;
+  }
+  
+  @media (max-width: 992px) {
+    .auth-left {
+      display: none;
+    }
+  }
+  :root {
+    --primary: #2c3e50;
+    --primary-light: #3d566e;
+    --secondary: #3498db;
+    --success: #28a745;
+    --light: #f8f9fa;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+  }
+  
+  .pharmacist-auth-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .pharmacist-auth-card {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: none;
+  }
+  
+  .pharmacist-auth-left {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .pharmacist-auth-left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url('https://images.unsplash.com/photo-1587854692152-cbe660dbde88?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+  }
+  
+  .pharmacist-auth-left-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .pharmacist-auth-left h2 {
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pharmacist-features {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+  }
+  
+  .pharmacist-features li {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .pharmacist-features i {
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+  }
+  
+  .pharmacist-auth-right {
+    background: white;
+    padding: 3rem;
+  }
+  
+  .pharmacist-logo-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .pharmacist-logo-brand img {
+    height: 50px;
+    margin-right: 15px;
+  }
+  
+  .pharmacist-logo-text h3 {
+    font-weight: 700;
+    margin-bottom: 0;
+    color: var(--primary);
+  }
+  
+  .pharmacist-logo-text small {
+    color: var(--primary-light);
+    font-style: italic;
+  }
+  
+  .pharmacist-form-control {
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: #f8f9fa;
+  }
+  
+  .pharmacist-form-control:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+    background-color: white;
+  }
+  
+  .pharmacist-btn-primary {
+    background-color: var(--primary);
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  
+  .pharmacist-btn-primary:hover {
+    background-color: var(--primary-light);
+  }
+  
+  .pharmacist-auth-switch {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .pharmacist-auth-switch a {
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .pharmacist-divider {
+    display: flex;
+    align-items: center;
+    margin: 1.5rem 0;
+  }
+  
+  .pharmacist-divider::before, .pharmacist-divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .pharmacist-divider-text {
+    padding: 0 10px;
+    color: #6c757d;
+    font-size: 0.9rem;
+  }
+  
+  .pharmacist-rpps-badge {
+    background-color: var(--light);
+    border-radius: 20px;
+    padding: 5px 15px;
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    font-weight: 500;
+  }
+  
+  .pharmacist-required-field::after {
+    content: " *";
+    color: #dc3545;
+  }
+  
+  @media (max-width: 992px) {
+    .pharmacist-auth-left {
+      padding: 2rem;
+    }
+    
+    .pharmacist-auth-right {
+      padding: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .pharmacist-auth-left {
+      display: none;
+    }
+  }
+  
