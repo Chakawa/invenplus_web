@@ -18,6 +18,252 @@
   <!-- Slick Carousel -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  <style>
+    /* Animation personnalisée */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Styles pour le défilement horizontal des prestations */
+    .prestations-scroll-container {
+      margin-top: 50px;
+      padding: 40px 0;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ee 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .prestations-scroll-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #198754, #5cb85c, #198754);
+      background-size: 200% 100%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .prestations-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 25px;
+      padding: 30px 10px;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .prestations-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .prestation-scroll-item {
+      flex: 0 0 auto;
+      width: 280px;
+      background: white;
+      border-radius: 15px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .prestation-scroll-item::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: #198754;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    
+    .prestation-scroll-item:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+    
+    .prestation-scroll-item:hover::after {
+      transform: scaleX(1);
+    }
+    
+    .prestation-scroll-item i {
+      font-size: 3rem;
+      color: #198754;
+      margin-bottom: 20px;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .prestation-scroll-item:hover i {
+      animation: float 2s ease-in-out infinite;
+      color: #13653f;
+    }
+    
+    .prestation-scroll-item h4 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    
+    .prestation-scroll-item p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    /* Styles pour la section Notre Équipe */
+    .team-section {
+      background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      padding: 80px 0;
+    }
+    
+    .team-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(25, 135, 84, 0.9);
+    }
+    
+    .team-container {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .team-scroll {
+      display: flex;
+      overflow-x: auto;
+      gap: 30px;
+      padding: 30px 10px;
+      scroll-snap-type: x mandatory;
+    }
+    
+    .team-member {
+      flex: 0 0 auto;
+      width: 300px;
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      text-align: center;
+      transition: all 0.4s ease;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .team-member::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ffc107, #fd7e14, #ffc107);
+      background-size: 200% 100%;
+      animation: gradient 3s ease infinite;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+    }
+    
+    .team-member:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .team-member h4 {
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #333;
+    }
+    
+    .team-member .position {
+      color: #198754;
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .team-member p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+    
+    .team-social {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .team-social a {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #198754;
+      transition: all 0.3s ease;
+    }
+    
+    .team-social a:hover {
+      background: #198754;
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .prestation-scroll-item {
+        width: 240px;
+        padding: 25px 15px;
+      }
+      
+      .team-member {
+        width: 260px;
+        padding: 25px;
+      }
+      
+      .team-member img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -435,80 +681,115 @@
     </div>
   </section>
 
-  <!-- Section Témoignages -->
-  <section class="py-6 bg-light">
+  <!-- Section Prestations en défilement horizontal -->
+  <section class="prestations-scroll-container">
     <div class="container">
+      <h2 class="text-center mb-5 fw-bold" data-aos="fade-up">Nos Prestations en Détail</h2>
+      <div class="prestations-scroll">
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="100">
+          <i class="fas fa-boxes"></i>
+          <h4>Gestion de Stock</h4>
+          <p>Suivi en temps réel de vos médicaments avec alertes automatiques</p>
+        </div>
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="200">
+          <i class="fas fa-users"></i>
+          <h4>Recrutement</h4>
+          <p>Accès à une base de professionnels qualifiés</p>
+        </div>
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="300">
+          <i class="fas fa-store"></i>
+          <h4>E-Parapharmacie</h4>
+          <p>Boutique en ligne clé en main</p>
+        </div>
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="400">
+          <i class="fas fa-chart-line"></i>
+          <h4>Analyses</h4>
+          <p>Tableaux de bord et indicateurs clés</p>
+        </div>
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="500">
+          <i class="fas fa-file-invoice"></i>
+          <h4>Facturation</h4>
+          <p>Gestion des ordonnances et factures</p>
+        </div>
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="600">
+          <i class="fas fa-bell"></i>
+          <h4>Alertes</h4>
+          <p>Notifications importantes en temps réel</p>
+        </div>
+        <div class="prestation-scroll-item" data-aos="fade-right" data-aos-delay="700">
+          <i class="fas fa-map-marked-alt"></i>
+          <h4>Géolocalisation</h4>
+          <p>Orientation des clients vers votre pharmacie</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Notre Équipe -->
+  <section class="team-section">
+    <div class="container team-container">
       <div class="row justify-content-center text-center mb-5">
         <div class="col-lg-8" data-aos="fade-up">
-          <span class="badge bg-success rounded-pill px-3 py-2 mb-3">Témoignages</span>
-          <h2 class="fw-bold mb-4">Ce que disent nos clients</h2>
+          <span class="badge bg-warning rounded-pill px-3 py-2 mb-3">Notre Équipe</span>
+          <h2 class="fw-bold mb-4 text-white">L'équipe derrière InvenPlus</h2>
+          <p class="lead text-white">Des professionnels dédiés à votre succès</p>
         </div>
       </div>
 
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up">
-          <div class="testimonial-card p-4 h-100">
-            <div class="d-flex align-items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="60" alt="Client">
-              <div>
-                <h5 class="mb-0">Jean Traoré</h5>
-                <small class="text-muted">Pharmacie du Plateau, Abidjan</small>
-              </div>
-            </div>
-            <div class="text-warning mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-            <blockquote class="mb-0">
-              "InvenPlus a transformé notre gestion des stocks. Nous avons réduit nos pertes de 40% en 3 mois seulement."
-            </blockquote>
+      <div class="team-scroll">
+        <div class="team-member" data-aos="flip-left">
+          <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Membre de l'équipe">
+          <h4>Jean Kouassi</h4>
+          <p class="position">Directeur Technique</p>
+          <p>15 ans d'expérience en solutions pharmaceutiques</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
-
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="testimonial-card p-4 h-100">
-            <div class="d-flex align-items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="60" alt="Client">
-              <div>
-                <h5 class="mb-0">Aminata Diakité</h5>
-                <small class="text-muted">Pharmacie Santé Plus, Yopougon</small>
-              </div>
-            </div>
-            <div class="text-warning mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </div>
-            <blockquote class="mb-0">
-              "La boutique en ligne nous a permis d'augmenter notre chiffre d'affaires parapharmacie de 35%."
-            </blockquote>
+        <div class="team-member" data-aos="flip-left" data-aos-delay="100">
+          <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Membre de l'équipe">
+          <h4>Aminata Diop</h4>
+          <p class="position">Responsable Support</p>
+          <p>Ancienne pharmacienne, experte en gestion</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
-
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="testimonial-card p-4 h-100">
-            <div class="d-flex align-items-center mb-4">
-              <img src="https://randomuser.me/api/portraits/men/65.jpg" class="rounded-circle me-3" width="60" alt="Client">
-              <div>
-                <h5 class="mb-0">Koffi N'Guessan</h5>
-                <small class="text-muted">Pharmacie Bonne Santé, Cocody</small>
-              </div>
-            </div>
-            <div class="text-warning mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="far fa-star"></i>
-            </div>
-            <blockquote class="mb-0">
-              "Le module recrutement m'a permis de trouver deux préparateurs qualifiés en moins d'une semaine."
-            </blockquote>
+        <div class="team-member" data-aos="flip-left" data-aos-delay="200">
+          <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Membre de l'équipe">
+          <h4>Paul N'Dri</h4>
+          <p class="position">Développeur Senior</p>
+          <p>Spécialiste des plateformes de gestion</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="team-member" data-aos="flip-left" data-aos-delay="300">
+          <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Membre de l'équipe">
+          <h4>Fatou Traoré</h4>
+          <p class="position">Responsable Marketing</p>
+          <p>Stratégies digitales pour pharmacies</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="team-member" data-aos="flip-left" data-aos-delay="400">
+          <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Membre de l'équipe">
+          <h4>Koffi Yao</h4>
+          <p class="position">Expert Comptabilité</p>
+          <p>Optimisation financière pour officines</p>
+          <div class="team-social">
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
           </div>
         </div>
       </div>
@@ -523,8 +804,8 @@
           <h2 class="fw-bold mb-4">Prêt à transformer votre pharmacie ?</h2>
           <p class="lead mb-5">Rejoignez le réseau InvenPlus et bénéficiez de tous nos outils pour développer votre activité.</p>
           <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="#" class="btn btn-light btn-lg px-4 py-3">Demander une démo</a>
-            <a href="#" class="btn btn-outline-light btn-lg px-4 py-3">Nous contacter</a>
+            <a href="#" class="btn btn-light btn-lg px-4 py-3" data-aos="zoom-in" data-aos-delay="100">Demander une démo</a>
+            <a href="#" class="btn btn-outline-light btn-lg px-4 py-3" data-aos="zoom-in" data-aos-delay="200">Nous contacter</a>
           </div>
         </div>
       </div>
@@ -654,6 +935,27 @@
         autoplaySpeed: 3000,
         arrows: false
       });
+      
+      // Animation au survol des cartes de prestation
+      $('.prestation-scroll-item').hover(
+        function() {
+          $(this).find('i').css('transform', 'scale(1.1)');
+        },
+        function() {
+          $(this).find('i').css('transform', 'scale(1)');
+        }
+      );
+      
+      // Animation au survol des membres d'équipe
+      $('.team-member').hover(
+        function() {
+          $(this).find('img').css('transform', 'scale(1.1)');
+          $(this).find('.team-social a').css('transform', 'translateY(0)');
+        },
+        function() {
+          $(this).find('img').css('transform', 'scale(1)');
+        }
+      );
     });
   </script>
 </body>
