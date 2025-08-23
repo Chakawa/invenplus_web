@@ -3,142 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InvenPlus - Connexion & Inscription</title>
+  <title>Connexion - InventPlus</title>
+  <link rel="stylesheet" href="../css/styles.css">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
-  <style>
-  </style>
 </head>
 <body>
-  <div class="container-fluid min-vh-100 d-flex align-items-center">
-    <div class="auth-container">
-      <div class="auth-card">
-        <div class="row g-0">
-          <!-- Colonne de gauche (présentation) -->
-          <div class="col-lg-6 auth-left d-flex align-items-center">
-            <div>
-              <h2 class="mb-4">Bienvenue sur InvenPlus</h2>
-              <p class="mb-4">La plateforme de gestion pharmaceutique la plus complète en Côte d'Ivoire.</p>
-              
-              <ul>
-                <li><i class="fas fa-check-circle"></i> Gestion de stock optimisée</li>
-                <li><i class="fas fa-check-circle"></i> Recrutement de personnel qualifié</li>
-                <li><i class="fas fa-check-circle"></i> Boutique en ligne intégrée</li>
-                <li><i class="fas fa-check-circle"></i> Analyse des performances</li>
-                <li><i class="fas fa-check-circle"></i> Support technique 24/7</li>
-              </ul>
+
+  <!-- Container principal -->
+  <div class="auth-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header text-center mb-4">
+              <a href="index.html" class="navbar-brand text-success d-inline-block mb-3">
+                <img src="../assets/logo.jpg" alt="logo" width="60" class="me-2" />
+                <span class="fw-bold fs-3">INVENP+</span>
+              </a>
+              <h2 class="fw-bold mb-2">Connexion</h2>
+              <p class="text-muted">Accédez à votre compte InventPlus</p>
             </div>
-          </div>
-          
-          <!-- Colonne de droite (formulaires) -->
-          <div class="col-lg-6 auth-right">
-            <!-- Logo et marque -->
-            <div class="logo-brand">
-              <img src="../assets/logo.jpg" alt="InvenPlus Logo">
-              <div class="logo-text">
-                <h3>INVENP+</h3>
-                <small>Pour Toi, On Est Là</small>
-              </div>
-            </div>
-            
-            <!-- Formulaire de Connexion (par défaut visible) -->
-            <div id="login-form">
-              <h4 class="mb-4">Connectez-vous à votre compte</h4>
-              
-              <form>
+
+            <!-- Form -->
+            <div class="auth-body">
+              <form id="loginForm" class="auth-form">
                 <div class="mb-3">
-                  <label for="login-email" class="form-label">Email ou Numéro de téléphone</label>
-                  <input type="text" class="form-control" id="login-email" placeholder="email@exemple.com ou +225...">
-                </div>
-                
-                <div class="mb-3">
-                  <label for="login-password" class="form-label">Mot de passe</label>
-                  <input type="password" class="form-control" id="login-password" placeholder="••••••••">
-                  <div class="d-flex justify-content-between mt-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="remember-me">
-                      <label class="form-check-label small" for="remember-me">Se souvenir de moi</label>
-                    </div>
-                    <a href="#" class="small text-success">Mot de passe oublié ?</a>
+                  <label for="email" class="form-label fw-bold">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-envelope text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="email" 
+                           placeholder="votre@email.com" required>
                   </div>
                 </div>
-                
-                <button type="submit" class="btn btn-success w-100 mb-3">Se connecter</button>
-              </form>
-              
-              <div class="divider">
-                <span class="divider-text">OU</span>
-              </div>
-              
-              <div class="social-login">
-                <button class="btn btn-google">
-                  <i class="fab fa-google"></i> Continuer avec Google
+
+                <div class="mb-3">
+                  <label for="password" class="form-label fw-bold">Mot de passe</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="password" 
+                           placeholder="Votre mot de passe" required>
+                    <button class="btn btn-outline-secondary border-start-0" type="button" 
+                            onclick="togglePassword('password')">
+                      <i class="fas fa-eye" id="passwordIcon"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label text-muted" for="rememberMe">
+                      Se souvenir de moi
+                    </label>
+                  </div>
+                  <a href="#" class="text-success text-decoration-none fw-bold">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="btn btn-success w-100 py-3 fw-bold mb-3">
+                  <i class="fas fa-sign-in-alt me-2"></i>Se connecter
                 </button>
-                <button class="btn btn-facebook">
-                  <i class="fab fa-facebook-f"></i> Continuer avec Facebook
-                </button>
-              </div>
-              
-              <div class="auth-switch">
-                <span>Nouveau sur InvenPlus ? </span>
-                <a href="#" id="show-register">Créer un compte</a>
-              </div>
-            </div>
-            
-            <!-- Formulaire d'Inscription (caché par défaut) -->
-            <div id="register-form" style="display: none;">
-              <h4 class="mb-4">Créez votre compte</h4>
-              
-              <form>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="register-firstname" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="register-firstname" placeholder="Votre prénom">
+
+                <div class="text-center mb-3">
+                  <span class="text-muted">Ou connectez-vous avec</span>
+                </div>
+
+                <div class="row g-2 mb-4">
+                  <div class="col-6">
+                    <button type="button" class="btn btn-outline-dark w-100 py-2">
+                      <i class="fab fa-google me-2"></i>Google
+                    </button>
                   </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="register-lastname" class="form-label">Nom</label>
-                    <input type="text" class="form-control" id="register-lastname" placeholder="Votre nom">
+                  <div class="col-6">
+                    <button type="button" class="btn btn-outline-primary w-100 py-2">
+                      <i class="fab fa-facebook-f me-2"></i>Facebook
+                    </button>
                   </div>
                 </div>
-                
-                <div class="mb-3">
-                  <label for="register-email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="register-email" placeholder="email@exemple.com">
-                </div>
-                
-                <div class="mb-3">
-                  <label for="register-phone" class="form-label">Numéro de téléphone</label>
-                  <input type="tel" class="form-control" id="register-phone" placeholder="+225 XX XX XX XX">
-                </div>
-                
-                <div class="mb-3">
-                  <label for="register-password" class="form-label">Mot de passe</label>
-                  <input type="password" class="form-control" id="register-password" placeholder="••••••••">
-                  <small class="text-muted">Minimum 8 caractères avec chiffres et lettres</small>
-                </div>
-                
-                <div class="mb-3">
-                  <label for="register-confirm-password" class="form-label">Confirmer le mot de passe</label>
-                  <input type="password" class="form-control" id="register-confirm-password" placeholder="••••••••">
-                </div>
-                
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="terms-agree">
-                  <label class="form-check-label small" for="terms-agree">J'accepte les <a href="#" class="text-success">Conditions d'utilisation</a> et la <a href="#" class="text-success">Politique de confidentialité</a></label>
-                </div>
-                
-                <button type="submit" class="btn btn-success w-100 mb-3">S'inscrire</button>
               </form>
-              
-              <div class="auth-switch">
-                <span>Vous avez déjà un compte ? </span>
-                <a href="#" id="show-login">Se connecter</a>
-              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="auth-footer text-center">
+              <p class="text-muted mb-0">
+                Pas encore de compte ? 
+                <a href="register.html" class="text-success text-decoration-none fw-bold">S'inscrire</a>
+              </p>
             </div>
           </div>
         </div>
@@ -148,57 +110,48 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
   
   <script>
-    $(document).ready(function() {
-      // Basculer entre les formulaires de connexion et d'inscription
-      $('#show-register').click(function(e) {
-        e.preventDefault();
-        $('#login-form').hide();
-        $('#register-form').show();
-      });
+    // Toggle password visibility
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById('passwordIcon');
       
-      $('#show-login').click(function(e) {
-        e.preventDefault();
-        $('#register-form').hide();
-        $('#login-form').show();
-      });
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Form submission
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
       
-      // Validation du formulaire d'inscription
-      $('#register-form form').submit(function(e) {
-        e.preventDefault();
-        
-        // Vérification des mots de passe
-        const password = $('#register-password').val();
-        const confirmPassword = $('#register-confirm-password').val();
-        
-        if (password !== confirmPassword) {
-          alert('Les mots de passe ne correspondent pas');
-          return;
-        }
-        
-        // Vérification des CGU
-        if (!$('#terms-agree').is(':checked')) {
-          alert('Veuillez accepter les conditions d\'utilisation');
-          return;
-        }
-        
-        // Ici vous ajouteriez le code pour envoyer les données au serveur
-        alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
-        $('#register-form').hide();
-        $('#login-form').show();
-      });
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
       
-      // Validation du formulaire de connexion
-      $('#login-form form').submit(function(e) {
-        e.preventDefault();
-        
-        // Ici vous ajouteriez le code pour vérifier les identifiants
-        alert('Connexion réussie ! Redirection...');
-        // window.location.href = 'tableau-de-bord.html';
-      });
+      // Validation basique
+      if (!email || !password) {
+        showToast('Veuillez remplir tous les champs', 'error');
+        return;
+      }
+      
+      // Simulation de connexion
+      showToast('Connexion en cours...', 'info');
+      
+      setTimeout(() => {
+        showToast('Connexion réussie ! Redirection...', 'success');
+        setTimeout(() => {
+          window.location.href = 'client-dashboard.html';
+        }, 1500);
+      }, 2000);
     });
   </script>
 </body>

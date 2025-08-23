@@ -3,199 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InvenPlus - Espace Partenaire Pharmaciens</title>
+  <title>Espace Partenaire - InventPlus</title>
+  <link rel="stylesheet" href="../css/styles.css">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <div class="container-fluid min-vh-100 d-flex align-items-center">
-    <div class="pharmacist-auth-container">
-      <div class="pharmacist-auth-card">
-        <div class="row g-0">
-          <!-- Colonne de gauche (présentation) -->
-          <div class="col-lg-6 pharmacist-auth-left">
-            <div class="pharmacist-auth-left-content">
-              <h2>Espace Partenaire Pharmaciens</h2>
-              <p>Accédez à des outils professionnels dédiés aux pharmacies et officines.</p>
-              
-              <ul class="pharmacist-features">
-                <li>
-                  <i class="fas fa-pills"></i>
-                  <div>
-                    <h5>Gestion de stock avancée</h5>
-                    <p class="small">Suivi en temps réel, alertes de péremption et analyse des ventes</p>
-                  </div>
-                </li>
-                <li>
-                  <i class="fas fa-chart-line"></i>
-                  <div>
-                    <h5>Tableaux de bord analytiques</h5>
-                    <p class="small">Indicateurs clés et performances de votre pharmacie</p>
-                  </div>
-                </li>
-                <li>
-                  <i class="fas fa-users-cog"></i>
-                  <div>
-                    <h5>Gestion d'équipe</h5>
-                    <p class="small">Organisez vos plannings et accédez à l'espace recrutement</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+
+  <!-- Container principal -->
+  <div class="auth-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header text-center mb-4">
+              <a href="index.html" class="navbar-brand text-success d-inline-block mb-3">
+                <img src="../assets/logo.jpg" alt="logo" width="60" class="me-2" />
+                <span class="fw-bold fs-3">INVENP+</span>
+              </a>
+              <h2 class="fw-bold mb-2">Espace Partenaire</h2>
+              <p class="text-muted">Accédez à votre espace pharmacien</p>
           </div>
           
-          
-          <!-- Colonne de droite (formulaires) -->
-          <div class="col-lg-6 pharmacist-auth-right">
-            <!-- Logo et marque -->
-            <div class="pharmacist-logo-brand">
-              <img src="../assets/logo.jpg" alt="InvenPlus Logo">
-              <div class="pharmacist-logo-text">
-                <h3>INVENP+ <span class="pharmacist-rpps-badge">Espace Pharmaciens</span></h3>
-                <small>Solutions professionnelles pour votre officine</small>
-              </div>
-            </div>
-            <!-- Ajoutez cette section après le logo en version mobile -->
-<div class="d-lg-none mb-4">
-    <div class="accordion" id="pharmacistMobileAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#pharmacistMobileCollapse">
-            <i class="fas fa-info-circle me-2"></i> À propos de l'espace pharmacien
-          </button>
-        </h2>
-        <div id="pharmacistMobileCollapse" class="accordion-collapse collapse" data-bs-parent="#pharmacistMobileAccordion">
-          <div class="accordion-body">
-            <p class="mb-3">Accédez à des outils professionnels dédiés aux pharmacies et officines.</p>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <strong><i class="fas fa-pills me-2"></i> Gestion de stock</strong>
-                <p class="small mb-0">Suivi en temps réel et analyse des ventes</p>
-              </li>
-              <li class="mb-2">
-                <strong><i class="fas fa-chart-line me-2"></i> Tableaux de bord</strong>
-                <p class="small mb-0">Indicateurs clés de performance</p>
-              </li>
-              <li>
-                <strong><i class="fas fa-users-cog me-2"></i> Gestion d'équipe</strong>
-                <p class="small mb-0">Plannings et espace recrutement</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+            <!-- Form -->
+            <div class="auth-body">
+              <form id="partnerLoginForm" class="auth-form">
+                <div class="mb-3">
+                  <label for="pharmacyCode" class="form-label fw-bold">Code Pharmacie</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-clinic-medical text-muted"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" id="pharmacyCode" 
+                           placeholder="Votre code pharmacie" required>
     </div>
   </div>
             
-            <!-- Formulaire de Connexion (par défaut visible) -->
-            <div id="pharmacist-login-form">
-              <h4 class="mb-4">Connexion Professionnelle</h4>
-              
-              <form>
                 <div class="mb-3">
-                  <label for="pharmacist-login-email" class="form-label pharmacist-required-field">Email professionnel</label>
-                  <input type="email" class="form-control pharmacist-form-control" id="pharmacist-login-email" placeholder="pharmacie@exemple.com" required>
-                </div>
-                
-                <div class="mb-3">
-                  <label for="pharmacist-login-password" class="form-label pharmacist-required-field">Mot de passe</label>
-                  <input type="password" class="form-control pharmacist-form-control" id="pharmacist-login-password" placeholder="••••••••" required>
-                  <div class="d-flex justify-content-between mt-2">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="pharmacist-remember-me">
-                      <label class="form-check-label small" for="pharmacist-remember-me">Se souvenir de moi</label>
-                    </div>
-                    <a href="#" class="small text-primary">Mot de passe oublié ?</a>
+                  <label for="email" class="form-label fw-bold">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-envelope text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="email" 
+                           placeholder="votre@email.com" required>
                   </div>
                 </div>
                 
-                <button type="submit" class="btn pharmacist-btn-primary w-100 mb-3">Accéder à mon espace</button>
-              </form>
-              
-              <div class="pharmacist-divider">
-                <span class="pharmacist-divider-text">OU</span>
-              </div>
-              
-              <div class="text-center mb-3">
-                <p class="small">Vous n'avez pas encore de compte partenaire ?</p>
-                <a href="#" id="pharmacist-show-register" class="btn btn-outline-primary">Demander un accès professionnel</a>
-              </div>
-              
-              <div class="text-center small mt-4">
-                <a href="../connexion.html" class="text-muted"><i class="fas fa-arrow-left me-1"></i> Retour à l'accueil général</a>
+                <div class="mb-3">
+                  <label for="password" class="form-label fw-bold">Mot de passe</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="password" 
+                           placeholder="Votre mot de passe" required>
+                    <button class="btn btn-outline-secondary border-start-0" type="button" 
+                            onclick="togglePassword('password')">
+                      <i class="fas fa-eye" id="passwordIcon"></i>
+                    </button>
               </div>
             </div>
             
-            <!-- Formulaire d'Inscription (caché par défaut) -->
-            <div id="pharmacist-register-form" style="display: none;">
-              <h4 class="mb-4">Demande d'accès professionnel</h4>
-              <p class="small text-muted mb-4">Réservé aux pharmaciens et officines enregistrées. Nous vérifierons vos informations avant activation.</p>
-              
-              <form>
-                <div class="mb-3">
-                  <label for="pharmacy-name" class="form-label pharmacist-required-field">Nom de la pharmacie</label>
-                  <input type="text" class="form-control pharmacist-form-control" id="pharmacy-name" placeholder="Ex: Pharmacie du Plateau" required>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label text-muted" for="rememberMe">
+                      Se souvenir de moi
+                    </label>
+                </div>
+                  <a href="#" class="text-success text-decoration-none fw-bold">Mot de passe oublié ?</a>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="pharmacy-rpps" class="form-label pharmacist-required-field">Numéro RPPS ou Ordre</label>
-                  <input type="text" class="form-control pharmacist-form-control" id="pharmacy-rpps" placeholder="Votre numéro d'identification" required>
+                <button type="submit" class="btn btn-success w-100 py-3 fw-bold mb-3">
+                  <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                </button>
+
+                <div class="text-center mb-3">
+                  <span class="text-muted">Ou connectez-vous avec</span>
                 </div>
                 
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="pharmacist-firstname" class="form-label pharmacist-required-field">Prénom</label>
-                    <input type="text" class="form-control pharmacist-form-control" id="pharmacist-firstname" placeholder="Votre prénom" required>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="pharmacist-lastname" class="form-label pharmacist-required-field">Nom</label>
-                    <input type="text" class="form-control pharmacist-form-control" id="pharmacist-lastname" placeholder="Votre nom" required>
-                  </div>
+                <div class="row g-2 mb-4">
+                  <div class="col-6">
+                    <button type="button" class="btn btn-outline-dark w-100 py-2">
+                      <i class="fab fa-google me-2"></i>Google
+                    </button>
                 </div>
-                
-                <div class="mb-3">
-                  <label for="pharmacist-email" class="form-label pharmacist-required-field">Email professionnel</label>
-                  <input type="email" class="form-control pharmacist-form-control" id="pharmacist-email" placeholder="pharmacien@exemple.com" required>
+                  <div class="col-6">
+                    <button type="button" class="btn btn-outline-primary w-100 py-2">
+                      <i class="fab fa-facebook-f me-2"></i>Facebook
+                    </button>
                 </div>
-                
-                <div class="mb-3">
-                  <label for="pharmacist-phone" class="form-label pharmacist-required-field">Téléphone de la pharmacie</label>
-                  <input type="tel" class="form-control pharmacist-form-control" id="pharmacist-phone" placeholder="+225 XX XX XX XX" required>
                 </div>
-                
-                <div class="mb-3">
-                  <label for="pharmacy-address" class="form-label pharmacist-required-field">Adresse de la pharmacie</label>
-                  <textarea class="form-control pharmacist-form-control" id="pharmacy-address" rows="2" placeholder="Adresse complète" required></textarea>
-                </div>
-                
-                <div class="mb-3">
-                  <label for="pharmacist-password" class="form-label pharmacist-required-field">Créer un mot de passe</label>
-                  <input type="password" class="form-control pharmacist-form-control" id="pharmacist-password" placeholder="••••••••" required>
-                  <small class="text-muted">Minimum 10 caractères avec chiffres, lettres et caractères spéciaux</small>
-                </div>
-                
-                <div class="mb-4">
-                  <label for="pharmacist-confirm-password" class="form-label pharmacist-required-field">Confirmer le mot de passe</label>
-                  <input type="password" class="form-control pharmacist-form-control" id="pharmacist-confirm-password" placeholder="••••••••" required>
-                </div>
-                
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="pharmacist-terms-agree" required>
-                  <label class="form-check-label small" for="pharmacist-terms-agree">Je certifie être pharmacien diplômé et accepte les <a href="#" class="text-primary">Conditions d'utilisation professionnelles</a></label>
-                </div>
-                
-                <button type="submit" class="btn pharmacist-btn-primary w-100 mb-3">Envoyer la demande</button>
               </form>
-              
-              <div class="pharmacist-auth-switch">
-                <span>Vous avez déjà un accès ? </span>
-                <a href="#" id="pharmacist-show-login">Se connecter</a>
-              </div>
+                </div>
+                
+            <!-- Footer -->
+            <div class="auth-footer text-center">
+              <p class="text-muted mb-0">
+                Pas encore partenaire ? 
+                <a href="#" class="text-success text-decoration-none fw-bold">Devenir partenaire</a>
+              </p>
             </div>
           </div>
         </div>
@@ -203,64 +119,81 @@
     </div>
   </div>
 
+  <!-- Footer avec services partenaires -->
+  <footer class="bg-light py-5 mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="fw-bold mb-3">Services Partenaires</h5>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge bg-success p-2">Audit de stock</span>
+            <span class="badge bg-success p-2">Gestion RH</span>
+            <span class="badge bg-success p-2">Formation</span>
+            <span class="badge bg-success p-2">Support technique</span>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="fw-bold mb-3">Avantages</h5>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-check text-success me-2"></i>Notifications en temps réel</li>
+            <li><i class="fas fa-check text-success me-2"></i>Gestion simplifiée</li>
+            <li><i class="fas fa-check text-success me-2"></i>Support dédié</li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5 class="fw-bold mb-3">Contact</h5>
+          <p class="mb-1"><i class="fas fa-phone text-success me-2"></i>+225 01 23 45 67 89</p>
+          <p class="mb-0"><i class="fas fa-envelope text-success me-2"></i>partenaires@invenplus.ci</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
   
   <script>
-    $(document).ready(function() {
-      // Basculer entre les formulaires de connexion et d'inscription
-      $('#pharmacist-show-register').click(function(e) {
-        e.preventDefault();
-        $('#pharmacist-login-form').hide();
-        $('#pharmacist-register-form').show();
-      });
+    // Toggle password visibility
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById('passwordIcon');
       
-      $('#pharmacist-show-login').click(function(e) {
-        e.preventDefault();
-        $('#pharmacist-register-form').hide();
-        $('#pharmacist-login-form').show();
-      });
-      
-      // Validation du formulaire d'inscription
-      $('#pharmacist-register-form form').submit(function(e) {
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Form submission
+    document.getElementById('partnerLoginForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Vérification des mots de passe
-        const password = $('#pharmacist-password').val();
-        const confirmPassword = $('#pharmacist-confirm-password').val();
-        
-        if (password !== confirmPassword) {
-          alert('Les mots de passe ne correspondent pas');
+      const pharmacyCode = document.getElementById('pharmacyCode').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Validation basique
+      if (!pharmacyCode || !email || !password) {
+        showToast('Veuillez remplir tous les champs', 'error');
           return;
         }
         
-        if (password.length < 10) {
-          alert('Le mot de passe doit contenir au moins 10 caractères');
-          return;
-        }
-        
-        // Vérification des CGU
-        if (!$('#pharmacist-terms-agree').is(':checked')) {
-          alert('Vous devez certifier être pharmacien diplômé et accepter les conditions');
-          return;
-        }
-        
-        // Ici vous ajouteriez le code pour envoyer les données au serveur
-        alert('Demande envoyée ! Notre équipe va vérifier vos informations professionnelles et vous contactera sous 48h.');
-        $('#pharmacist-register-form').hide();
-        $('#pharmacist-login-form').show();
-      });
+      // Simulation de connexion
+      showToast('Connexion en cours...', 'info');
       
-      // Validation du formulaire de connexion
-      $('#pharmacist-login-form form').submit(function(e) {
-        e.preventDefault();
-        
-        // Ici vous ajouteriez le code pour vérifier les identifiants
-        alert('Connexion réussie ! Redirection vers votre espace professionnel...');
-        // window.location.href = 'pharmacien/dashboard.html';
-      });
+      setTimeout(() => {
+        showToast('Connexion réussie ! Redirection...', 'success');
+        setTimeout(() => {
+          window.location.href = 'partenaire-dashboard.html';
+        }, 1500);
+      }, 2000);
     });
   </script>
 </body>

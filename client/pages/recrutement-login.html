@@ -3,243 +3,235 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InvenPlus - Espace Recrutement Étudiants</title>
+  <title>Espace Recrutement - InventPlus</title>
+  <link rel="stylesheet" href="../css/styles.css">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <!-- Section mobile (visible seulement sur petits écrans) -->
-  <div class="student-mobile-intro d-lg-none">
-    <div class="container px-0">
-      <h2><i class="fas fa-graduation-cap me-2"></i> Espace Recrutement Étudiants</h2>
-      <p class="mb-4">Trouvez des opportunités dans les pharmacies partenaires</p>
-      
-      <div class="student-mobile-features">
-        <div class="mb-3 d-flex align-items-center">
-          <div class="me-3">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-              <i class="fas fa-briefcase"></i>
+
+  <!-- Container principal -->
+  <div class="auth-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+          <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header text-center mb-4">
+              <a href="index.html" class="navbar-brand text-success d-inline-block mb-3">
+                <img src="../assets/logo.jpg" alt="logo" width="60" class="me-2" />
+                <span class="fw-bold fs-3">INVENP+</span>
+              </a>
+              <h2 class="fw-bold mb-2">Espace Recrutement</h2>
+              <p class="text-muted">Connectez-vous ou créez votre profil étudiant</p>
             </div>
-          </div>
-          <div>
-            <h5 class="mb-1">Offres de stage</h5>
-            <p class="small mb-0 opacity-75">Accédez à des centaines d'offres</p>
+
+            <!-- Toggle Buttons -->
+            <div class="text-center mb-4">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-success active" id="loginBtn" onclick="showLogin()">
+                  <i class="fas fa-sign-in-alt me-2"></i>Connexion
+                </button>
+                <button type="button" class="btn btn-outline-success" id="registerBtn" onclick="showRegister()">
+                  <i class="fas fa-user-plus me-2"></i>Inscription
+                </button>
           </div>
         </div>
         
-        <div class="mb-3 d-flex align-items-center">
-          <div class="me-3">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-              <i class="fas fa-user-tie"></i>
-            </div>
-          </div>
-          <div>
-            <h5 class="mb-1">Emplois étudiants</h5>
-            <p class="small mb-0 opacity-75">Travaillez dans votre domaine</p>
+            <!-- Login Form -->
+            <div id="loginForm" class="auth-body">
+              <form class="auth-form">
+                <div class="mb-3">
+                  <label for="studentId" class="form-label fw-bold">Numéro étudiant</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-id-card text-muted"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" id="studentId" 
+                           placeholder="Votre numéro étudiant" required>
           </div>
         </div>
         
-        <div class="d-flex align-items-center">
-          <div class="me-3">
-            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-              <i class="fas fa-network-wired"></i>
-            </div>
-          </div>
-          <div>
-            <h5 class="mb-1">Réseau professionnel</h5>
-            <p class="small mb-0 opacity-75">Connectez-vous avec des pharmaciens</p>
-          </div>
-        </div>
-      </div>
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label fw-bold">Email</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-envelope text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="loginEmail" 
+                           placeholder="votre@email.com" required>
     </div>
   </div>
 
-  <div class="container-fluid min-vh-100 d-flex align-items-center">
-    <div class="student-auth-container">
-      <div class="student-auth-card">
-        <div class="row g-0">
-          <!-- Colonne de gauche (présentation) -->
-          <div class="col-lg-6 student-auth-left">
-            <div class="student-auth-left-content">
-              <h2>Espace Recrutement Étudiants</h2>
-              <p>Accédez à des opportunités de stage et d'emploi dans les pharmacies partenaires.</p>
-              
-              <ul class="student-features">
-                <li>
-                  <i class="fas fa-briefcase"></i>
-                  <div>
-                    <h5>Offres de stage</h5>
-                    <p class="small">Trouvez des stages adaptés à votre cursus universitaire</p>
-                  </div>
-                </li>
-                <li>
-                  <i class="fas fa-user-tie"></i>
-                  <div>
-                    <h5>Emplois étudiants</h5>
-                    <p class="small">Travaillez comme préparateur en pharmacie</p>
-                  </div>
-                </li>
-                <li>
-                  <i class="fas fa-network-wired"></i>
-                  <div>
-                    <h5>Réseau professionnel</h5>
-                    <p class="small">Connectez-vous avec des professionnels du secteur</p>
-                  </div>
-                </li>
-              </ul>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label fw-bold">Mot de passe</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="loginPassword" 
+                           placeholder="Votre mot de passe" required>
+                    <button class="btn btn-outline-secondary border-start-0" type="button" 
+                            onclick="togglePassword('loginPassword')">
+                      <i class="fas fa-eye" id="loginPasswordIcon"></i>
+                    </button>
             </div>
           </div>
           
-          <!-- Colonne de droite (formulaire) -->
-          <div class="col-lg-6 student-auth-right">
-            <!-- Logo et marque -->
-            <div class="student-logo-brand">
-              <img src="../assets/logo.jpg" alt="InvenPlus Logo">
-              <div class="student-logo-text">
-                <h3>INVENP+ <span class="student-badge">Espace Étudiants</span></h3>
-                <small>Opportunités pour étudiants en pharmacie</small>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label text-muted" for="rememberMe">
+                      Se souvenir de moi
+                    </label>
               </div>
+                  <a href="#" class="text-success text-decoration-none fw-bold">Mot de passe oublié ?</a>
             </div>
             
-            <!-- Barre de progression -->
-            <div class="progress">
-              <div class="progress-bar" role="progressbar" style="width: 33%; background-color: #28a745;" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
+                <button type="submit" class="btn btn-success w-100 py-3 fw-bold mb-3">
+                  <i class="fas fa-sign-in-alt me-2"></i>Se connecter
+                </button>
+              </form>
             </div>
             
-            <!-- Formulaire d'inscription en plusieurs étapes -->
-            <form id="student-registration-form">
-              <!-- Étape 1 - Informations de base -->
-              <div class="form-step active" id="step1">
-                <h4 class="mb-4">Informations personnelles</h4>
-                
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <label for="student-firstname" class="form-label student-required-field">Prénom</label>
-                    <input type="text" class="form-control student-form-control" id="student-firstname" required>
+            <!-- Register Form -->
+            <div id="registerForm" class="auth-body" style="display: none;">
+              <form class="auth-form">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label for="firstName" class="form-label fw-bold">Prénom</label>
+                    <input type="text" class="form-control" id="firstName" 
+                           placeholder="Votre prénom" required>
                   </div>
-                  <div class="col-md-6 mb-3">
-                    <label for="student-lastname" class="form-label student-required-field">Nom</label>
-                    <input type="text" class="form-control student-form-control" id="student-lastname" required>
-                  </div>
+                  
+                  <div class="col-md-6">
+                    <label for="lastName" class="form-label fw-bold">Nom</label>
+                    <input type="text" class="form-control" id="lastName" 
+                           placeholder="Votre nom" required>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-email" class="form-label student-required-field">Email universitaire</label>
-                  <input type="email" class="form-control student-form-control" id="student-email" placeholder="prenom.nom@etudiant.univ-pharma.ci" required>
+                  <div class="col-md-6">
+                    <label for="studentIdReg" class="form-label fw-bold">Numéro étudiant</label>
+                    <input type="text" class="form-control" id="studentIdReg" 
+                           placeholder="Votre numéro étudiant" required>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-phone" class="form-label student-required-field">Téléphone</label>
-                  <input type="tel" class="form-control student-form-control" id="student-phone" placeholder="+225 XX XX XX XX" required>
+                  <div class="col-md-6">
+                    <label for="birthDate" class="form-label fw-bold">Date de naissance</label>
+                    <input type="date" class="form-control" id="birthDate" required>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-birthdate" class="form-label student-required-field">Date de naissance</label>
-                  <input type="date" class="form-control student-form-control" id="student-birthdate" required>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label fw-bold">Email</label>
+                    <input type="email" class="form-control" id="email" 
+                           placeholder="votre@email.com" required>
                 </div>
                 
-                <div class="d-flex justify-content-end">
-                  <button type="button" class="btn student-btn-primary next-step" data-next="step2">Suivant <i class="fas fa-arrow-right ms-2"></i></button>
-                </div>
+                  <div class="col-md-6">
+                    <label for="phone" class="form-label fw-bold">Téléphone</label>
+                    <input type="tel" class="form-control" id="phone" 
+                           placeholder="+225 01 23 45 67 89" required>
               </div>
               
-              <!-- Étape 2 - Formation -->
-              <div class="form-step" id="step2">
-                <h4 class="mb-4">Votre formation</h4>
-                
-                <div class="mb-3">
-                  <label for="student-university" class="form-label student-required-field">Université/Faculté</label>
-                  <select class="form-select student-form-control" id="student-university" required>
-                    <option value="" selected disabled>Sélectionnez votre université</option>
-                    <option value="UFHB">UFHB - Université Félix Houphouët-Boigny</option>
-                    <option value="UNA">UNA - Université Nangui Abrogoua</option>
-                    <option value="Autre">Autre établissement</option>
+                  <div class="col-md-6">
+                    <label for="academicLevel" class="form-label fw-bold">Niveau académique</label>
+                    <select class="form-select" id="academicLevel" required>
+                      <option value="">Sélectionnez votre niveau</option>
+                      <option value="bac+1">Bac+1</option>
+                      <option value="bac+2">Bac+2</option>
+                      <option value="bac+3">Bac+3</option>
+                      <option value="bac+4">Bac+4</option>
+                      <option value="bac+5">Bac+5</option>
+                      <option value="bac+6">Bac+6</option>
+                      <option value="bac+7">Bac+7</option>
+                      <option value="bac+8">Bac+8</option>
                   </select>
                 </div>
                 
-                <div class="mb-3" id="other-university-container" style="display: none;">
-                  <label for="student-other-university" class="form-label student-required-field">Nom de l'établissement</label>
-                  <input type="text" class="form-control student-form-control" id="student-other-university">
-                </div>
-                
-                <div class="mb-3">
-                  <label for="student-year" class="form-label student-required-field">Année d'étude</label>
-                  <select class="form-select student-form-control" id="student-year" required>
-                    <option value="" selected disabled>Sélectionnez votre année</option>
-                    <option value="1">1ère année</option>
-                    <option value="2">2ème année</option>
-                    <option value="3">3ème année</option>
-                    <option value="4">4ème année</option>
-                    <option value="5">5ème année</option>
-                    <option value="6">6ème année</option>
-                    <option value="intern">Interne en pharmacie</option>
+                  <div class="col-md-6">
+                    <label for="specialty" class="form-label fw-bold">Spécialité</label>
+                    <select class="form-select" id="specialty" required>
+                      <option value="">Sélectionnez votre spécialité</option>
+                      <option value="pharmacie">Pharmacie</option>
+                      <option value="biologie">Biologie</option>
+                      <option value="chimie">Chimie</option>
+                      <option value="medecine">Médecine</option>
+                      <option value="autre">Autre</option>
                   </select>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-specialty" class="form-label">Spécialité (optionnelle)</label>
-                  <input type="text" class="form-control student-form-control" id="student-specialty" placeholder="Ex: Pharmacie industrielle">
+                  <div class="col-12">
+                    <label for="experience" class="form-label fw-bold">Expérience</label>
+                    <textarea class="form-control" id="experience" rows="3" 
+                              placeholder="Décrivez votre expérience professionnelle ou stages..."></textarea>
                 </div>
                 
-                <div class="d-flex justify-content-between">
-                  <button type="button" class="btn btn-outline-secondary prev-step" data-prev="step1">
-                    <i class="fas fa-arrow-left me-2"></i> Retour
-                  </button>
-                  <button type="button" class="btn student-btn-primary next-step" data-next="step3">
-                    Suivant <i class="fas fa-arrow-right ms-2"></i>
+                  <div class="col-md-6">
+                    <label for="password" class="form-label fw-bold">Mot de passe</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" id="password" 
+                             placeholder="Votre mot de passe" required>
+                      <button class="btn btn-outline-secondary" type="button" 
+                              onclick="togglePassword('password')">
+                        <i class="fas fa-eye" id="passwordIcon"></i>
                   </button>
                 </div>
+                    <div class="password-strength mt-2" id="passwordStrength"></div>
               </div>
               
-              <!-- Étape 3 - Expérience et CV -->
-              <div class="form-step" id="step3">
-                <h4 class="mb-4">Votre profil professionnel</h4>
-                
-                <div class="mb-3">
-                  <label for="student-experience" class="form-label">Expérience (optionnelle)</label>
-                  <textarea class="form-control student-form-control" id="student-experience" rows="3" placeholder="Décrivez vos expériences en pharmacie, stages, etc."></textarea>
+                  <div class="col-md-6">
+                    <label for="confirmPassword" class="form-label fw-bold">Confirmer le mot de passe</label>
+                    <div class="input-group">
+                      <input type="password" class="form-control" id="confirmPassword" 
+                             placeholder="Confirmez votre mot de passe" required>
+                      <button class="btn btn-outline-secondary" type="button" 
+                              onclick="togglePassword('confirmPassword')">
+                        <i class="fas fa-eye" id="confirmPasswordIcon"></i>
+                      </button>
+                </div>
+                    <div class="password-match mt-2" id="passwordMatch"></div>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-skills" class="form-label">Compétences (optionnelle)</label>
-                  <textarea class="form-control student-form-control" id="student-skills" rows="2" placeholder="Listez vos compétences techniques"></textarea>
-                  <small class="text-muted">Séparez les compétences par des virgules</small>
+                  <div class="col-12">
+                    <div class="form-check mb-3">
+                      <input class="form-check-input" type="checkbox" id="terms" required>
+                      <label class="form-check-label text-muted" for="terms">
+                        J'accepte les <a href="#" class="text-success">conditions d'utilisation</a> et la 
+                        <a href="#" class="text-success">politique de confidentialité</a>
+                      </label>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-cv" class="form-label student-required-field">CV (PDF, max 2MB)</label>
-                  <input type="file" class="form-control student-form-control" id="student-cv" accept=".pdf" required>
+                    <div class="form-check mb-4">
+                      <input class="form-check-input" type="checkbox" id="newsletter">
+                      <label class="form-check-label text-muted" for="newsletter">
+                        Je souhaite recevoir les offres d'emploi et la newsletter
+                      </label>
+                </div>
                 </div>
                 
-                <div class="mb-3">
-                  <label for="student-motivation" class="form-label">Lettre de motivation (optionnelle)</label>
-                  <input type="file" class="form-control student-form-control" id="student-motivation" accept=".pdf,.doc,.docx">
-                </div>
-                
-                <div class="mb-3 form-check">
-                  <input type="checkbox" class="form-check-input" id="student-terms" required>
-                  <label class="form-check-label small" for="student-terms">J'accepte les <a href="#" class="text-primary">conditions d'utilisation</a> et la <a href="#" class="text-primary">politique de confidentialité</a></label>
-                </div>
-                
-                <div class="d-flex justify-content-between">
-                  <button type="button" class="btn btn-outline-secondary prev-step" data-prev="step2">
-                    <i class="fas fa-arrow-left me-2"></i> Retour
-                  </button>
-                  <button type="submit" class="btn student-btn-primary">
-                    <i class="fas fa-user-plus me-2"></i> Finaliser l'inscription
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-success w-100 py-3 fw-bold mb-3">
+                      <i class="fas fa-user-plus me-2"></i>Créer mon profil
                   </button>
                 </div>
               </div>
             </form>
-            
-            <div class="student-auth-switch">
-              <span>Vous avez déjà un compte ? </span>
-              <a href="connexion-etudiants.html" class="text-primary">Connectez-vous</a>
+            </div>
+
+            <!-- Footer -->
+            <div class="auth-footer text-center">
+              <p class="text-muted mb-0">
+                <a href="index.html" class="text-success text-decoration-none">
+                  <i class="fas fa-arrow-left me-1"></i>Retour à l'accueil
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -249,69 +241,219 @@
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
   
   <script>
-    $(document).ready(function() {
-      // Gestion des étapes du formulaire
-      $('.next-step').click(function() {
-        const currentStep = $(this).closest('.form-step');
-        const nextStepId = $(this).data('next');
-        
-        // Validation simple
-        let isValid = true;
-        currentStep.find('[required]').each(function() {
-          if (!$(this).val()) {
-            isValid = false;
-            $(this).addClass('is-invalid');
+    // Toggle between login and register forms
+    function showLogin() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('loginBtn').classList.add('active');
+      document.getElementById('registerBtn').classList.remove('active');
+    }
+
+    function showRegister() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'block';
+      document.getElementById('loginBtn').classList.remove('active');
+      document.getElementById('registerBtn').classList.add('active');
+    }
+
+    // Toggle password visibility
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(inputId === 'password' ? 'passwordIcon' : 
+                                      inputId === 'confirmPassword' ? 'confirmPasswordIcon' : 
+                                      'loginPasswordIcon');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
           } else {
-            $(this).removeClass('is-invalid');
-          }
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Password strength indicator
+    function checkPasswordStrength(password) {
+      let strength = 0;
+      const strengthBar = document.getElementById('passwordStrength');
+      
+      if (password.length >= 8) strength++;
+      if (/[a-z]/.test(password)) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+      
+      let strengthText = '';
+      let strengthClass = '';
+      
+      switch(strength) {
+        case 0:
+        case 1:
+          strengthText = 'Très faible';
+          strengthClass = 'text-danger';
+          break;
+        case 2:
+          strengthText = 'Faible';
+          strengthClass = 'text-warning';
+          break;
+        case 3:
+          strengthText = 'Moyen';
+          strengthClass = 'text-info';
+          break;
+        case 4:
+          strengthText = 'Fort';
+          strengthClass = 'text-success';
+          break;
+        case 5:
+          strengthText = 'Très fort';
+          strengthClass = 'text-success fw-bold';
+          break;
+      }
+      
+      strengthBar.innerHTML = `<small class="${strengthClass}">Force: ${strengthText}</small>`;
+    }
+
+    // Password match indicator
+    function checkPasswordMatch() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      const matchDiv = document.getElementById('passwordMatch');
+      
+      if (confirmPassword === '') {
+        matchDiv.innerHTML = '';
+        return;
+      }
+      
+      if (password === confirmPassword) {
+        matchDiv.innerHTML = '<small class="text-success">✓ Les mots de passe correspondent</small>';
+      } else {
+        matchDiv.innerHTML = '<small class="text-danger">✗ Les mots de passe ne correspondent pas</small>';
+      }
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // Password strength and match for register form
+      const password = document.getElementById('password');
+      const confirmPassword = document.getElementById('confirmPassword');
+      
+      if (password) {
+        password.addEventListener('input', function() {
+          checkPasswordStrength(this.value);
         });
-        
-        if (isValid) {
-          currentStep.removeClass('active');
-          $('#' + nextStepId).addClass('active');
+      }
+      
+      if (confirmPassword) {
+        confirmPassword.addEventListener('input', checkPasswordMatch);
+      }
+
+      // Form submissions
+      const loginForm = document.querySelector('#loginForm form');
+      const registerForm = document.querySelector('#registerForm form');
+
+      if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          showToast('Connexion en cours...', 'info');
           
-          // Mise à jour de la barre de progression
-          const progress = (nextStepId === 'step2') ? '66%' : '100%';
-          $('.progress-bar').css('width', progress);
-        }
-      });
-      
-      $('.prev-step').click(function() {
-        const currentStep = $(this).closest('.form-step');
-        const prevStepId = $(this).data('prev');
-        
-        currentStep.removeClass('active');
-        $('#' + prevStepId).addClass('active');
-        
-        // Mise à jour de la barre de progression
-        const progress = (prevStepId === 'step1') ? '33%' : '66%';
-        $('.progress-bar').css('width', progress);
-      });
-      
-      // Affichage conditionnel pour "autre université"
-      $('#student-university').change(function() {
-        if ($(this).val() === 'Autre') {
-          $('#other-university-container').show();
-          $('#student-other-university').attr('required', true);
-        } else {
-          $('#other-university-container').hide();
-          $('#student-other-university').removeAttr('required');
-        }
-      });
-      
-      // Soumission du formulaire
-      $('#student-registration-form').submit(function(e) {
+          setTimeout(() => {
+            showToast('Connexion réussie ! Redirection...', 'success');
+            setTimeout(() => {
+              window.location.href = 'etudiant-dashboard.html';
+            }, 1500);
+          }, 2000);
+        });
+      }
+
+      if (registerForm) {
+        registerForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        // Ici vous ajouteriez le code pour envoyer les données au serveur
-        alert('Inscription réussie ! Un email de confirmation vous a été envoyé.');
-        // window.location.href = 'etudiant/dashboard.html';
-      });
+          showToast('Création du profil en cours...', 'info');
+          
+          setTimeout(() => {
+            showToast('Profil créé avec succès ! Redirection...', 'success');
+            setTimeout(() => {
+              window.location.href = 'etudiant-dashboard.html';
+            }, 1500);
+          }, 2000);
+        });
+      }
     });
   </script>
 </body>
+</html>
+      btnText.classList.add('d-none');
+      btnLoading.classList.remove('d-none');
+      
+      // Simulate login process
+      setTimeout(() => {
+        // Reset button state
+        btn.disabled = false;
+        btnText.classList.remove('d-none');
+        btnLoading.classList.add('d-none');
+        
+        // Show success message
+        window.inventPlusApp.showToast('Connexion réussie ! Redirection...', 'success');
+        
+        // Redirect to student dashboard
+        setTimeout(() => {
+          window.location.href = 'student-dashboard.html';
+        }, 1500);
+      }, 2000);
+    });
+  </script>
+</body>
+
+</html>
+      btnText.classList.add('d-none');
+      btnLoading.classList.remove('d-none');
+      
+      // Simulate login process
+      setTimeout(() => {
+        // Reset button state
+        btn.disabled = false;
+        btnText.classList.remove('d-none');
+        btnLoading.classList.add('d-none');
+        
+        // Show success message
+        window.inventPlusApp.showToast('Connexion réussie ! Redirection...', 'success');
+        
+        // Redirect to student dashboard
+        setTimeout(() => {
+          window.location.href = 'student-dashboard.html';
+        }, 1500);
+      }, 2000);
+    });
+  </script>
+</body>
+
+</html>
+      btnText.classList.add('d-none');
+      btnLoading.classList.remove('d-none');
+      
+      // Simulate login process
+      setTimeout(() => {
+        // Reset button state
+        btn.disabled = false;
+        btnText.classList.remove('d-none');
+        btnLoading.classList.add('d-none');
+        
+        // Show success message
+        window.inventPlusApp.showToast('Connexion réussie ! Redirection...', 'success');
+        
+        // Redirect to student dashboard
+        setTimeout(() => {
+          window.location.href = 'student-dashboard.html';
+        }, 1500);
+      }, 2000);
+    });
+  </script>
+</body>
+
 </html>

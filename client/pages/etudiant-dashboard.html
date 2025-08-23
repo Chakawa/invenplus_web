@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Étudiant - InventPlus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/etudiant-dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <a href="../index.html" class="navbar-brand me-3">
+                            <i class="fas fa-pills text-success me-2"></i>
+                            <span class="fw-bold">InventPlus</span>
+                        </a>
+                        <span class="badge bg-success">Espace Étudiant</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-outline-success position-relative" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    2
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Notifications</h6></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-briefcase text-success me-2"></i>Nouvelle offre d'emploi disponible</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-calendar text-info me-2"></i>Entretien confirmé pour demain</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Voir toutes</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-graduate me-2"></i>
+                                Sarah Koné
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Mon Profil</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Paramètres</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="../index.html"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="container-fluid">
+            <!-- Welcome Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="welcome-title">Bonjour, Sarah Koné !</h1>
+                                <p class="welcome-subtitle">Bienvenue dans votre espace étudiant. Suivez vos candidatures et développez votre carrière pharmaceutique.</p>
+                                <div class="welcome-actions">
+                                    <a href="#" class="btn btn-success me-3">
+                                        <i class="fas fa-plus me-2"></i>Nouvelle Candidature
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success">
+                                        <i class="fas fa-graduation-cap me-2"></i>Formations
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="welcome-avatar">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-primary">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="8">0</h3>
+                            <p class="stat-label">Candidatures Envoyées</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="3">0</h3>
+                            <p class="stat-label">Entretiens Programmes</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="5">0</h3>
+                            <p class="stat-label">En Attente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-info">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="75">0</h3>
+                            <p class="stat-label">Profil Complété %</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
+            <div class="row">
+                <!-- Job Offers -->
+                <div class="col-lg-8 mb-4">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-briefcase me-2"></i>
+                                Offres d'Emploi Récentes
+                            </h5>
+                            <a href="#" class="btn btn-sm btn-outline-success">Voir tout</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="job-offers-list">
+                                <div class="job-offer-item">
+                                    <div class="job-info">
+                                        <h6 class="job-title">Assistant Pharmacien</h6>
+                                        <p class="job-details">
+                                            <i class="fas fa-store text-muted me-2"></i>
+                                            Pharmacie Centrale - Abidjan, Plateau
+                                        </p>
+                                        <span class="job-type">Temps plein</span>
+                                        <span class="job-salary">Salaire: 150,000 - 200,000 FCFA</span>
+                                    </div>
+                                    <div class="job-actions">
+                                        <span class="badge bg-success">Disponible</span>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-success" onclick="applyForJob(this, 1)">
+                                                <i class="fas fa-paper-plane"></i> Postuler
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-primary" onclick="viewJobDetails(1)">
+                                                <i class="fas fa-eye"></i> Détails
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="job-offer-item">
+                                    <div class="job-info">
+                                        <h6 class="job-title">Stagiaire en Pharmacie</h6>
+                                        <p class="job-details">
+                                            <i class="fas fa-store text-muted me-2"></i>
+                                            Pharmacie Moderne - Abidjan, Cocody
+                                        </p>
+                                        <span class="job-type">Stage</span>
+                                        <span class="job-salary">Indemnité: 50,000 FCFA</span>
+                                    </div>
+                                    <div class="job-actions">
+                                        <span class="badge bg-warning">En cours</span>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-warning" disabled>
+                                                <i class="fas fa-clock"></i> En cours
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="job-offer-item">
+                                    <div class="job-info">
+                                        <h6 class="job-title">Technicien en Pharmacie</h6>
+                                        <p class="job-details">
+                                            <i class="fas fa-store text-muted me-2"></i>
+                                            Pharmacie Santé - Abidjan, Yopougon
+                                        </p>
+                                        <span class="job-type">CDD</span>
+                                        <span class="job-salary">Salaire: 120,000 - 150,000 FCFA</span>
+                                    </div>
+                                    <div class="job-actions">
+                                        <span class="badge bg-danger">Fermée</span>
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-secondary" disabled>
+                                                <i class="fas fa-times"></i> Fermée
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Upcoming Interviews -->
+                <div class="col-lg-4 mb-4">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-bolt me-2"></i>
+                                Actions Rapides
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions">
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-primary">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Nouvelle Candidature</h6>
+                                        <p>Postuler à une offre</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-success">
+                                        <i class="fas fa-user-edit"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Compléter Profil</h6>
+                                        <p>Améliorer votre CV</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-warning">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Formations</h6>
+                                        <p>Développer vos compétences</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-info">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Statistiques</h6>
+                                        <p>Suivre vos performances</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Interviews -->
+                    <div class="dashboard-card mt-4">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-calendar me-2"></i>
+                                Entretiens à Venir
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="interviews-list">
+                                <div class="interview-item">
+                                    <div class="interview-icon bg-success">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="interview-content">
+                                        <h6>Pharmacie Centrale</h6>
+                                        <p>Assistant Pharmacien</p>
+                                        <small class="text-muted">Demain à 14h00</small>
+                                    </div>
+                                </div>
+                                <div class="interview-item">
+                                    <div class="interview-icon bg-info">
+                                        <i class="fas fa-calendar-alt"></i>
+                                    </div>
+                                    <div class="interview-content">
+                                        <h6>Pharmacie Moderne</h6>
+                                        <p>Stagiaire en Pharmacie</p>
+                                        <small class="text-muted">Vendredi à 10h00</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activities & Training -->
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-history me-2"></i>
+                                Activités Récentes
+                            </h5>
+                            <a href="#" class="btn btn-sm btn-outline-success">Voir tout</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="activities-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-success">
+                                        <i class="fas fa-paper-plane"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h6>Candidature envoyée</h6>
+                                        <p>Assistant Pharmacien - Pharmacie Centrale</p>
+                                        <small class="text-muted">Il y a 2 heures</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-info">
+                                        <i class="fas fa-user-edit"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h6>Profil mis à jour</h6>
+                                        <p>Ajout de nouvelles compétences</p>
+                                        <small class="text-muted">Il y a 1 jour</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-warning">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h6>Entretien programmé</h6>
+                                        <p>Pharmacie Moderne - Demain 10h00</p>
+                                        <small class="text-muted">Il y a 2 jours</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-graduation-cap me-2"></i>
+                                Formations Recommandées
+                            </h5>
+                            <a href="#" class="btn btn-sm btn-outline-success">Voir tout</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="trainings-list">
+                                <div class="training-item">
+                                    <div class="training-icon bg-primary">
+                                        <i class="fas fa-pills"></i>
+                                    </div>
+                                    <div class="training-content">
+                                        <h6>Gestion des Médicaments</h6>
+                                        <p>Formation en ligne - 2h</p>
+                                        <small class="text-success">Gratuit</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="training-item">
+                                    <div class="training-icon bg-success">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="training-content">
+                                        <h6>Service Client en Pharmacie</h6>
+                                        <p>Formation en ligne - 1.5h</p>
+                                        <small class="text-success">Gratuit</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-success">
+                                        <i class="fas fa-play"></i>
+                                    </button>
+                                </div>
+                                <div class="training-item">
+                                    <div class="training-icon bg-warning">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <div class="training-content">
+                                        <h6>Gestion de Stock</h6>
+                                        <p>Formation en ligne - 3h</p>
+                                        <small class="text-warning">Premium</small>
+                                    </div>
+                                    <button class="btn btn-sm btn-outline-warning">
+                                        <i class="fas fa-lock"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/etudiant-dashboard.js"></script>
+</body>
+</html>

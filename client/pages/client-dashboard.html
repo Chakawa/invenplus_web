@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord Client - InventPlus</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/client-dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <a href="../index.html" class="navbar-brand me-3">
+                            <i class="fas fa-pills text-success me-2"></i>
+                            <span class="fw-bold">InventPlus</span>
+                        </a>
+                        <span class="badge bg-success">Espace Client</span>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-outline-success position-relative" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    3
+                                </span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><h6 class="dropdown-header">Notifications</h6></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-check-circle text-success me-2"></i>Médicament disponible à la Pharmacie Centrale</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-clock text-warning me-2"></i>Nouvelle recherche de médicament</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle text-info me-2"></i>Mise à jour des prix</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-center" href="#">Voir toutes</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle me-2"></i>
+                                Jean Dupont
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Paramètres</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="../index.html"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="container-fluid">
+            <!-- Welcome Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="welcome-card">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h1 class="welcome-title">Bonjour, Jean Dupont !</h1>
+                                <p class="welcome-subtitle">Bienvenue dans votre espace personnel InventPlus</p>
+                                <div class="welcome-actions">
+                                    <a href="../pages/recherche-medicament.html" class="btn btn-success me-3">
+                                        <i class="fas fa-search me-2"></i>Nouvelle Recherche
+                                    </a>
+                                    <a href="#" class="btn btn-outline-success">
+                                        <i class="fas fa-history me-2"></i>Voir l'Historique
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="welcome-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-primary">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="24">0</h3>
+                            <p class="stat-label">Recherches Effectuées</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="18">0</h3>
+                            <p class="stat-label">Médicaments Trouvés</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="6">0</h3>
+                            <p class="stat-label">En Attente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="stat-card">
+                        <div class="stat-icon bg-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 class="stat-number" data-target="8">0</h3>
+                            <p class="stat-label">Pharmacies Visitées</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
+            <div class="row">
+                <!-- Recent Searches -->
+                <div class="col-lg-8 mb-4">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-history me-2"></i>
+                                Recherches Récentes
+                            </h5>
+                            <a href="#" class="btn btn-sm btn-outline-success">Voir tout</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="search-history">
+                                <div class="search-item">
+                                    <div class="search-info">
+                                        <h6 class="medication-name">Paracétamol 500mg</h6>
+                                        <p class="search-details">
+                                            <i class="fas fa-map-marker-alt text-muted me-2"></i>
+                                            Abidjan, Cocody
+                                        </p>
+                                        <span class="search-date">Il y a 2 heures</span>
+                                    </div>
+                                    <div class="search-status">
+                                        <span class="badge bg-success">Disponible</span>
+                                        <p class="pharmacy-name">Pharmacie Centrale</p>
+                                        <p class="price">500 FCFA</p>
+                                    </div>
+                                </div>
+                                <div class="search-item">
+                                    <div class="search-info">
+                                        <h6 class="medication-name">Amoxicilline 1g</h6>
+                                        <p class="search-details">
+                                            <i class="fas fa-map-marker-alt text-muted me-2"></i>
+                                            Abidjan, Plateau
+                                        </p>
+                                        <span class="search-date">Il y a 1 jour</span>
+                                    </div>
+                                    <div class="search-status">
+                                        <span class="badge bg-warning">En attente</span>
+                                        <p class="pharmacy-name">En cours...</p>
+                                        <p class="timer">Expire dans 5:23</p>
+                                    </div>
+                                </div>
+                                <div class="search-item">
+                                    <div class="search-info">
+                                        <h6 class="medication-name">Vitamine C 1000mg</h6>
+                                        <p class="search-details">
+                                            <i class="fas fa-map-marker-alt text-muted me-2"></i>
+                                            Abidjan, Yopougon
+                                        </p>
+                                        <span class="search-date">Il y a 2 jours</span>
+                                    </div>
+                                    <div class="search-status">
+                                        <span class="badge bg-danger">Non disponible</span>
+                                        <p class="pharmacy-name">Aucune réponse</p>
+                                        <p class="expired">Expiré</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions & Notifications -->
+                <div class="col-lg-4 mb-4">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-bolt me-2"></i>
+                                Actions Rapides
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions">
+                                <a href="../pages/recherche-medicament.html" class="quick-action-item">
+                                    <div class="action-icon bg-primary">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Nouvelle Recherche</h6>
+                                        <p>Trouver un médicament</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-success">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Pharmacies Proches</h6>
+                                        <p>Localiser les pharmacies</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-info">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Favoris</h6>
+                                        <p>Médicaments sauvegardés</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="quick-action-item">
+                                    <div class="action-icon bg-warning">
+                                        <i class="fas fa-cog"></i>
+                                    </div>
+                                    <div class="action-content">
+                                        <h6>Paramètres</h6>
+                                        <p>Configurer les préférences</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Notifications -->
+                    <div class="dashboard-card mt-4">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-bell me-2"></i>
+                                Notifications Récentes
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="notifications-list">
+                                <div class="notification-item">
+                                    <div class="notification-icon bg-success">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6>Médicament disponible</h6>
+                                        <p>Paracétamol trouvé à la Pharmacie Centrale</p>
+                                        <small class="text-muted">Il y a 2 heures</small>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon bg-info">
+                                        <i class="fas fa-info"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6>Mise à jour des prix</h6>
+                                        <p>Nouveaux prix disponibles dans votre zone</p>
+                                        <small class="text-muted">Il y a 1 jour</small>
+                                    </div>
+                                </div>
+                                <div class="notification-item">
+                                    <div class="notification-icon bg-warning">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6>Recherche en cours</h6>
+                                        <p>Amoxicilline en cours de vérification</p>
+                                        <small class="text-muted">Il y a 1 jour</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Favorite Medications -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="fas fa-heart me-2"></i>
+                                Médicaments Favoris
+                            </h5>
+                            <a href="#" class="btn btn-sm btn-outline-success">Gérer</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <div class="favorite-medication">
+                                        <div class="medication-icon">
+                                            <i class="fas fa-pills"></i>
+                                        </div>
+                                        <div class="medication-info">
+                                            <h6>Paracétamol 500mg</h6>
+                                            <p class="text-muted">Dernier prix: 500 FCFA</p>
+                                            <small class="text-success">Disponible à 3 pharmacies</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-heart-broken"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="favorite-medication">
+                                        <div class="medication-icon">
+                                            <i class="fas fa-pills"></i>
+                                        </div>
+                                        <div class="medication-info">
+                                            <h6>Vitamine C 1000mg</h6>
+                                            <p class="text-muted">Dernier prix: 800 FCFA</p>
+                                            <small class="text-warning">Disponible à 1 pharmacie</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-heart-broken"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <div class="favorite-medication">
+                                        <div class="medication-icon">
+                                            <i class="fas fa-pills"></i>
+                                        </div>
+                                        <div class="medication-info">
+                                            <h6>Ibuprofène 400mg</h6>
+                                            <p class="text-muted">Dernier prix: 600 FCFA</p>
+                                            <small class="text-success">Disponible à 5 pharmacies</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="fas fa-heart-broken"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/client-dashboard.js"></script>
+</body>
+</html>
+
+

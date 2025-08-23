@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recherche de Médicaments - InventPlus</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/medicament-search.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Navbar -->
+  <div class="top-navbar py-2">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center flex-grow-1">
+          <a class="navbar-brand text-success me-4 d-flex align-items-center" href="index.html">
+            <img src="../assets/logo.jpg" alt="logo" width="70" class="me-2" />
+            <div class="d-flex flex-column">
+              <span class="fw-bold fs-4">INVENP+</span>
+              <small class="text-muted fst-italic" style="font-size: 0.85rem;">Pour Toi, On Est Là</small>
+            </div>
+          </a>
+          
+          <!-- Barre de recherche -->
+          <div class="search-box d-flex flex-grow-1 me-2">
+            <input class="form-control" type="search" placeholder="Recherche un médicament..." id="mainSearchInput">
+            <button class="btn btn-success" type="button" onclick="redirectToSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <!-- Menu Burger (mobile only) -->
+          <div class="d-flex d-lg-none align-items-center">
+            <button class="navbar-toggler p-0 border-0" type="button" 
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                    aria-controls="mobileMenu">
+              <i class="fas fa-bars fs-4"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Espaces (desktop only) -->
+        <div class="d-none d-lg-flex">
+          <a href="recrutement-login.html" class="text-white me-3 fw-bold">
+            <i class="fas fa-user-tie me-1"></i> Espace recrutement
+          </a>
+          <a href="partenaire-login.html" class="text-white fw-bold">
+            <i class="fas fa-handshake me-1"></i> Espace partenaire
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Secondary Navbar (desktop only) -->
+  <nav class="navbar navbar-expand-lg secondary-navbar d-none d-lg-block">
+    <div class="container">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html"><i class="fas fa-home me-1"></i> Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="presentation.html"><i class="fas fa-hand-holding-medical me-1"></i> Prestation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="recherche-medicament.html"><i class="fas fa-search me-1"></i> Recherche Médicament</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recrutement.html"><i class="fas fa-user-tie me-1"></i> Recrutement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html"><i class="fas fa-phone me-1"></i> Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Connexion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Menu Mobile (Offcanvas) -->
+  <div class="offcanvas offcanvas-end offcanvas-nav" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title text-success">
+        <i class="fas fa-plus-circle me-2"></i>INVENP+
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Section Espaces -->
+      <div class="mb-4">
+        <h6 class="text-uppercase text-muted small fw-bold mb-3">Espaces</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="recrutement-login.html">
+              <i class="fas fa-user-tie text-success"></i> Recrutement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="partenaire-login.html">
+              <i class="fas fa-handshake text-success"></i> Partenaire
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Menu Principal -->
+      <h6 class="text-uppercase text-muted small fw-bold mb-3">Navigation</h6>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-home text-success"></i> Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="presentation.html">
+            <i class="fas fa-hand-holding-medical text-success"></i> Prestation
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="recherche-medicament.html">
+            <i class="fas fa-search text-success"></i> Recherche Médicament
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recrutement.html">
+            <i class="fas fa-user-tie text-success"></i> Recrutement
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">
+            <i class="fas fa-phone text-success"></i> Contact
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">
+            <i class="fas fa-user text-success"></i> Connexion
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <h1 class="hero-title">
+              <i class="fas fa-search text-success me-3"></i>
+              Recherche de Médicaments
+            </h1>
+            <p class="hero-subtitle">
+              Trouvez rapidement vos médicaments dans les pharmacies près de chez vous
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="search-container">
+              <div class="search-header">
+                <h3 class="search-title">
+                  <i class="fas fa-pills text-success me-2"></i>
+                  Que recherchez-vous ?
+                </h3>
+                <p class="search-description">
+                  Entrez le nom du médicament, la substance active ou la forme galénique
+                </p>
+              </div>
+              
+              <form class="search-form" id="medicamentSearchForm">
+                <div class="search-input-group">
+                  <div class="input-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input 
+                      type="text" 
+                      class="form-control search-input" 
+                      id="medicamentSearch"
+                      placeholder="Ex: Paracétamol, Doliprane, Ibuprofène..."
+                      required
+                    >
+                  </div>
+                  <button type="submit" class="btn btn-success search-btn">
+                    <i class="fas fa-search me-2"></i>
+                    Rechercher
+                  </button>
+                </div>
+                
+                <div class="search-filters">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="form-label">Ville</label>
+                      <select class="form-select" id="villeFilter">
+                        <option value="">Toutes les villes</option>
+                        <option value="abidjan">Abidjan</option>
+                        <option value="bouake">Bouaké</option>
+                        <option value="yamoussoukro">Yamoussoukro</option>
+                        <option value="san-pedro">San Pedro</option>
+                        <option value="korhogo">Korhogo</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Forme</label>
+                      <select class="form-select" id="formeFilter">
+                        <option value="">Toutes les formes</option>
+                        <option value="comprime">Comprimé</option>
+                        <option value="sirop">Sirop</option>
+                        <option value="gelule">Gélule</option>
+                        <option value="injection">Injection</option>
+                        <option value="pommade">Pommade</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Prix max</label>
+                      <select class="form-select" id="prixFilter">
+                        <option value="">Tous les prix</option>
+                        <option value="1000">Moins de 1000 FCFA</option>
+                        <option value="2000">Moins de 2000 FCFA</option>
+                        <option value="5000">Moins de 5000 FCFA</option>
+                        <option value="10000">Moins de 10000 FCFA</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Search Section -->
+    <section class="quick-search-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <h4 class="quick-search-title">
+              <i class="fas fa-bolt text-warning me-2"></i>
+              Recherches rapides
+            </h4>
+            <div class="quick-search-tags">
+              <button class="quick-tag" onclick="quickSearch('Paracétamol')">Paracétamol</button>
+              <button class="quick-tag" onclick="quickSearch('Ibuprofène')">Ibuprofène</button>
+              <button class="quick-tag" onclick="quickSearch('Vitamine C')">Vitamine C</button>
+              <button class="quick-tag" onclick="quickSearch('Oméprazole')">Oméprazole</button>
+              <button class="quick-tag" onclick="quickSearch('Amoxicilline')">Amoxicilline</button>
+              <button class="quick-tag" onclick="quickSearch('Doliprane')">Doliprane</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display: none;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="results-header">
+              <h4 class="results-title">
+                <i class="fas fa-list text-success me-2"></i>
+                Résultats de recherche
+              </h4>
+              <div class="results-count">
+                <span id="resultsCount">0</span> résultat(s) trouvé(s)
+              </div>
+            </div>
+            
+            <div class="results-container" id="resultsContainer">
+              <!-- Les résultats seront affichés ici -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- No Results Section -->
+    <section class="no-results-section" id="noResultsSection" style="display: none;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <div class="no-results-content">
+              <i class="fas fa-search text-muted mb-3" style="font-size: 4rem;"></i>
+              <h4 class="text-muted">Aucun résultat trouvé</h4>
+              <p class="text-muted mb-4">
+                Essayez avec d'autres termes de recherche ou vérifiez l'orthographe
+              </p>
+              <button class="btn btn-outline-success" onclick="clearSearch()">
+                <i class="fas fa-arrow-left me-2"></i>
+                Nouvelle recherche
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-clock text-success"></i>
+              </div>
+              <h5>Recherche rapide</h5>
+              <p>Obtenez des résultats en quelques secondes avec notre moteur de recherche optimisé</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-map-marker-alt text-success"></i>
+              </div>
+              <h5>Géolocalisation</h5>
+              <p>Trouvez les pharmacies les plus proches de votre position actuelle</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-bell text-success"></i>
+              </div>
+              <h5>Notifications</h5>
+              <p>Recevez des alertes en temps réel quand vos médicaments sont disponibles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-6 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h4 class="text-success mb-4"><i class="fas fa-plus-circle me-2"></i>INVENP+</h4>
+          <p class="mb-4">Plateforme innovante connectant patients et pharmacies pour un accès facilité aux médicaments et services pharmaceutiques.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <h5 class="mb-4">Liens Rapides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="recherche-medicament.html" class="text-white text-decoration-none">Recherche Médicament</a></li>
+            <li class="mb-2"><a href="recrutement-login.html" class="text-white text-decoration-none">Recrutement</a></li>
+            <li class="mb-2"><a href="partenaire-login.html" class="text-white text-decoration-none">Partenaires</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-4">
+          <h5 class="mb-4">Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="recherche-medicament.html" class="text-white text-decoration-none">Disponibilité médicaments</a></li>
+            <li class="mb-2"><a href="recherche-medicament.html" class="text-white text-decoration-none">Comparaison de prix</a></li>
+            <li class="mb-2"><a href="partenaire-login.html" class="text-white text-decoration-none">Audit de stock</a></li>
+            <li class="mb-2"><a href="recrutement-login.html" class="text-white text-decoration-none">Recrutement personnel</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Conseils santé</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-4">
+          <h5 class="mb-4">Contactez-nous</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex">
+              <i class="fas fa-map-marker-alt text-success mt-1 me-3"></i>
+              <span>Plateau, Rue des Pharmacies, Abidjan, Côte d'Ivoire</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-phone text-success mt-1 me-3"></i>
+              <span>+225 01 23 45 67 89</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-envelope text-success mt-1 me-3"></i>
+              <span>contact@invenplus.ci</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-clock text-success mt-1 me-3"></i>
+              <span>Lun-Sam: 8h00-18h00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-4 border-secondary">
+      
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2023 INVENP+. Tous droits réservés.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white text-decoration-none me-3">Conditions d'utilisation</a>
+          <a href="#" class="text-white text-decoration-none">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/medicament-search.js"></script>
+</body>
+</html>

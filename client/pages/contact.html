@@ -4,182 +4,151 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InvenPlus - Contactez-nous</title>
+  <link rel="stylesheet" href="../css/styles.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    :root {
-      --primary-color: #198754;
-      --secondary-color: #f8f9fa;
-      --dark-color: #343a40;
-    }
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f5f5f5;
-    }
-    
-    .contact-hero {
-      background: linear-gradient(135deg, rgba(25, 135, 84, 0.9) 0%, rgba(20, 110, 70, 0.9) 100%), 
-                  url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 100px 0;
-    }
-    
-    .contact-card {
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: none;
-    }
-    
-    .contact-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-    }
-    
-    .contact-icon {
-      width: 60px;
-      height: 60px;
-      background-color: rgba(25, 135, 84, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    
-    .contact-icon i {
-      font-size: 1.5rem;
-      color: var(--primary-color);
-    }
-    
-    .form-control {
-      height: 50px;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      padding-left: 20px;
-    }
-    
-    textarea.form-control {
-      height: auto;
-      padding-top: 15px;
-      min-height: 150px;
-    }
-    
-    .form-control:focus {
-      box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
-      border-color: var(--primary-color);
-    }
-    
-    .btn-success {
-      background-color: var(--primary-color);
-      border: none;
-      padding: 12px 30px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    
-    .btn-success:hover {
-      background-color: #157347;
-    }
-    
-    .map-container {
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      height: 100%;
-    }
-    
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      min-height: 300px;
-      border: none;
-    }
-    
-    .contact-info-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 25px;
-    }
-    
-    .contact-info-icon {
-      width: 50px;
-      height: 50px;
-      background-color: rgba(25, 135, 84, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 20px;
-      flex-shrink: 0;
-    }
-    
-    .contact-info-icon i {
-      color: var(--primary-color);
-      font-size: 1.2rem;
-    }
-    
-    .contact-divider {
-      width: 80px;
-      height: 3px;
-      background-color: var(--primary-color);
-      margin: 20px 0;
-    }
-    
-    .social-link {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background-color: rgba(25, 135, 84, 0.1);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 10px;
-      color: var(--dark-color);
-      transition: all 0.3s;
-    }
-    
-    .social-link:hover {
-      background-color: var(--primary-color);
-      color: white;
-      transform: translateY(-3px);
-    }
-    
-    @media (max-width: 768px) {
-      .contact-hero {
-        padding: 60px 0;
-      }
-      
-      .contact-info-item {
-        flex-direction: column;
-      }
-      
-      .contact-info-icon {
-        margin-bottom: 15px;
-        margin-right: 0;
-      }
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Navbar (identique à votre page existante) -->
-  <div class="top-navbar py-2 sticky-top">
-    <!-- Votre code navbar existant -->
+  <!-- Top Navbar -->
+  <div class="top-navbar py-2">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center flex-grow-1">
+          <a class="navbar-brand text-success me-4 d-flex align-items-center" href="../index.html">
+            <i class="fas fa-pills text-success me-2"></i>
+            <div class="d-flex flex-column">
+              <span class="fw-bold fs-4">InventPlus</span>
+              <small class="text-muted fst-italic" style="font-size: 0.85rem;">Pour Toi, On Est Là</small>
+            </div>
+          </a>
+          
+          <!-- Search Box -->
+          <div class="search-box d-none d-md-flex">
+            <input type="text" class="form-control" placeholder="Rechercher un médicament...">
+            <button class="btn btn-success" type="button" onclick="redirectToSearch()">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          
+          <!-- Menu Burger (mobile only) -->
+          <div class="d-flex d-lg-none align-items-center">
+            <button class="navbar-toggler p-0 border-0" type="button" 
+                    data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                    aria-controls="mobileMenu">
+              <i class="fas fa-bars fs-4"></i>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Espaces (desktop only) -->
+        <div class="d-none d-lg-flex">
+          <a href="recrutement-login.html" class="text-white me-3 fw-bold">
+            <i class="fas fa-user-tie me-1"></i> Espace recrutement
+          </a>
+          <a href="partenaire-login.html" class="text-white fw-bold">
+            <i class="fas fa-handshake me-1"></i> Espace partenaire
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Secondary Navbar (desktop only) -->
+  <nav class="navbar navbar-expand-lg secondary-navbar d-none d-lg-block">
+    <div class="container">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html"><i class="fas fa-home me-1"></i> Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="presentation.html"><i class="fas fa-hand-holding-medical me-1"></i> Prestation</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recherche-medicament.html"><i class="fas fa-search me-1"></i> Recherche Médicament</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recrutement.html"><i class="fas fa-user-tie me-1"></i> Recrutement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="contact.html"><i class="fas fa-phone me-1"></i> Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html"><i class="fas fa-user me-1"></i> Connexion</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- Menu Mobile (Offcanvas) -->
+  <div class="offcanvas offcanvas-end offcanvas-nav" tabindex="-1" id="mobileMenu">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title text-success">
+        <i class="fas fa-pills me-2"></i>InventPlus
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Section Espaces -->
+      <div class="mb-4">
+        <h6 class="text-uppercase text-muted small fw-bold mb-3">Espaces</h6>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="recrutement-login.html">
+              <i class="fas fa-user-tie text-success"></i> Recrutement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="partenaire-login.html">
+              <i class="fas fa-handshake text-success"></i> Partenaire
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Menu Principal -->
+      <h6 class="text-uppercase text-muted small fw-bold mb-3">Navigation</h6>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="../index.html">
+            <i class="fas fa-home text-success"></i> Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="presentation.html">
+            <i class="fas fa-hand-holding-medical text-success"></i> Prestation
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recherche-medicament.html">
+            <i class="fas fa-search text-success"></i> Recherche Médicament
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="recrutement.html">
+            <i class="fas fa-user-tie text-success"></i> Recrutement
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="contact.html">
+            <i class="fas fa-phone text-success"></i> Contact
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login.html">
+            <i class="fas fa-user text-success"></i> Connexion
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 
   <!-- Hero Section -->
-  <section class="contact-hero">
+  <section class="contact-hero" style="margin-top: 120px;">
     <div class="container">
       <div class="row align-items-center min-vh-40 py-5">
-        <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
+        <div class="col-lg-8 mx-auto text-center animate">
           <h1 class="display-4 fw-bold mb-4">Contactez InvenPlus</h1>
           <p class="lead mb-5">Nous sommes à votre écoute pour répondre à toutes vos questions et vous accompagner dans vos projets pharmaceutiques.</p>
         </div>
@@ -191,18 +160,18 @@
   <section class="py-5">
     <div class="container">
       <div class="row g-4 justify-content-center">
-        <div class="col-md-4" data-aos="fade-up">
+        <div class="col-md-4 animate delay-1">
           <div class="contact-card h-100 bg-white p-5 text-center">
             <div class="contact-icon mx-auto">
               <i class="fas fa-phone-alt"></i>
             </div>
             <h4>Téléphone</h4>
             <p class="mb-3">Parlez directement à un conseiller</p>
-            <a href="tel:+225XXXXXXXX" class="btn btn-outline-success">+225 XX XX XX XX</a>
+            <a href="tel:+2250123456789" class="btn btn-outline-success">+225 01 23 45 67 89</a>
           </div>
         </div>
         
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-md-4 animate delay-2">
           <div class="contact-card h-100 bg-white p-5 text-center">
             <div class="contact-icon mx-auto">
               <i class="fas fa-envelope"></i>
@@ -213,7 +182,7 @@
           </div>
         </div>
         
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-md-4 animate delay-3">
           <div class="contact-card h-100 bg-white p-5 text-center">
             <div class="contact-icon mx-auto">
               <i class="fas fa-map-marker-alt"></i>
@@ -231,7 +200,7 @@
   <section class="py-6 bg-white">
     <div class="container">
       <div class="row g-5">
-        <div class="col-lg-6" data-aos="fade-right">
+        <div class="col-lg-6 animate delay-1">
           <h2 class="fw-bold mb-4">Envoyez-nous un message</h2>
           <div class="contact-divider"></div>
           <p class="mb-5">Remplissez le formulaire ci-dessous et notre équipe vous répondra dans les plus brefs délais.</p>
@@ -250,25 +219,27 @@
               </div>
               <div class="col-12">
                 <div class="form-group mb-4">
-                  <input type="text" class="form-control" id="subject" placeholder="Sujet du message" required>
+                  <input type="text" class="form-control" id="subject" placeholder="Sujet de votre message" required>
                 </div>
               </div>
               <div class="col-12">
                 <div class="form-group mb-4">
-                  <textarea class="form-control" id="message" placeholder="Votre message" required></textarea>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Votre message" required></textarea>
                 </div>
               </div>
               <div class="col-12">
-                <button type="submit" class="btn btn-success">Envoyer le message</button>
+                <button type="submit" class="btn btn-success btn-lg px-5 py-3">
+                  <i class="fas fa-paper-plane me-2"></i>Envoyer le message
+                </button>
               </div>
             </div>
           </form>
         </div>
         
-        <div class="col-lg-6" data-aos="fade-left">
+        <div class="col-lg-6 animate delay-2">
           <h2 class="fw-bold mb-4">Informations de contact</h2>
           <div class="contact-divider"></div>
-          <p class="mb-5">Plusieurs moyens pour nous contacter selon votre préférence.</p>
+          <p class="mb-5">Retrouvez toutes nos coordonnées pour nous contacter facilement.</p>
           
           <div class="contact-info">
             <div class="contact-info-item">
@@ -277,17 +248,17 @@
               </div>
               <div>
                 <h5>Adresse</h5>
-                <p>Plateau, Rue des Pharmacies, Immeuble XYZ<br>Abidjan, Côte d'Ivoire</p>
+                <p>Plateau, Rue des Pharmacies, Abidjan, Côte d'Ivoire</p>
               </div>
             </div>
             
             <div class="contact-info-item">
               <div class="contact-info-icon">
-                <i class="fas fa-phone-alt"></i>
+                <i class="fas fa-phone"></i>
               </div>
               <div>
                 <h5>Téléphone</h5>
-                <p>+225 XX XX XX XX (Standard)<br>+225 XX XX XX XX (Support)</p>
+                <p>+225 01 23 45 67 89 (Standard)<br>+225 01 23 45 67 90 (Support)</p>
               </div>
             </div>
             
@@ -297,7 +268,7 @@
               </div>
               <div>
                 <h5>Email</h5>
-                <p>contact@invenplus.ci (Général)<br>support@invenplus.ci (Technique)</p>
+                <p>contact@invenplus.ci<br>support@invenplus.ci</p>
               </div>
             </div>
             
@@ -306,18 +277,10 @@
                 <i class="fas fa-clock"></i>
               </div>
               <div>
-                <h5>Heures d'ouverture</h5>
-                <p>Lundi - Vendredi: 8h00 - 18h00<br>Samedi: 9h00 - 13h00</p>
+                <h5>Horaires</h5>
+                <p>Lundi - Samedi: 8h00-18h00<br>Dimanche: Fermé</p>
               </div>
             </div>
-          </div>
-          
-          <div class="mt-5">
-            <h5 class="mb-3">Suivez-nous sur les réseaux</h5>
-            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </div>
@@ -325,18 +288,18 @@
   </section>
 
   <!-- Map Section -->
-  <section id="map" class="py-5 bg-light">
+  <section class="py-6 bg-light">
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
-        <div class="col-lg-8" data-aos="fade-up">
+        <div class="col-lg-8 animate delay-1">
           <h2 class="fw-bold mb-4">Trouvez-nous facilement</h2>
           <div class="contact-divider mx-auto"></div>
-          <p class="lead mt-4">Notre bureau est situé au cœur du Plateau, facilement accessible depuis toute la ville.</p>
+          <p class="lead text-muted">Notre bureau est situé au cœur d'Abidjan, facilement accessible.</p>
         </div>
       </div>
       
       <div class="row">
-        <div class="col-12" data-aos="zoom-in">
+        <div class="col-12 animate delay-2">
           <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.788292912141!2d-4.020485925019837!3d5.320327394711399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1eb43f3a5e9c9%3A0x7d9e1e9e9e9e9e9e!2sPlateau%2C%20Abidjan%2C%20C%C3%B4te%20d%27Ivoire!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" allowfullscreen="" loading="lazy"></iframe>
           </div>
@@ -349,32 +312,32 @@
   <section class="py-6 bg-white">
     <div class="container">
       <div class="row justify-content-center text-center mb-5">
-        <div class="col-lg-8" data-aos="fade-up">
+        <div class="col-lg-8 animate delay-1">
           <h2 class="fw-bold mb-4">Questions fréquentes</h2>
           <div class="contact-divider mx-auto"></div>
-          <p class="lead mt-4">Retrouvez ici les réponses aux questions les plus courantes.</p>
+          <p class="lead text-muted">Trouvez rapidement des réponses à vos questions.</p>
         </div>
       </div>
       
       <div class="row justify-content-center">
-        <div class="col-lg-10">
+        <div class="col-lg-8">
           <div class="accordion" id="faqAccordion">
             <!-- FAQ Item 1 -->
-            <div class="accordion-item border-0 mb-3" data-aos="fade-up">
+            <div class="accordion-item border-0 mb-3 animate delay-2">
               <h3 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed shadow-none bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                  Quels sont vos horaires de support client ?
+                  Comment fonctionne la recherche de médicaments ?
                 </button>
               </h3>
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Notre équipe de support est disponible du lundi au vendredi de 8h00 à 18h00 et le samedi de 9h00 à 13h00. En dehors de ces heures, vous pouvez nous laisser un message et nous vous répondrons dès la réouverture.
+                  Notre système envoie des notifications en temps réel aux pharmacies de votre zone. Vous recevez une réponse sous 10 minutes maximum avec la disponibilité et le prix du médicament recherché.
                 </div>
               </div>
             </div>
             
             <!-- FAQ Item 2 -->
-            <div class="accordion-item border-0 mb-3" data-aos="fade-up" data-aos-delay="100">
+            <div class="accordion-item border-0 mb-3 animate delay-3">
               <h3 class="accordion-header" id="headingTwo">
                 <button class="accordion-button collapsed shadow-none bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                   Comment devenir partenaire InvenPlus ?
@@ -382,68 +345,143 @@
               </h3>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                 <div class="accordion-body">
-                  Pour devenir partenaire, vous pouvez remplir le formulaire de contact en précisant votre demande ou nous appeler directement au +225 XX XX XX XX. Notre équipe commerciale étudiera votre demande et vous recontactera sous 48 heures.
+                  Pour devenir partenaire, vous pouvez remplir le formulaire de contact en précisant votre demande ou nous appeler directement au +225 01 23 45 67 89. Notre équipe commerciale étudiera votre demande et vous recontactera sous 48 heures.
                 </div>
               </div>
             </div>
             
-            <!-- Ajoutez d'autres questions ici -->
+            <!-- FAQ Item 3 -->
+            <div class="accordion-item border-0 mb-3 animate delay-3">
+              <h3 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed shadow-none bg-light rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Quels services proposez-vous aux pharmacies ?
+                </button>
+              </h3>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Nous proposons une gamme complète de services : gestion de stock, audit pharmaceutique, recrutement de personnel qualifié, formation continue, et outils de gestion numérique pour optimiser votre activité.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Call to Action -->
   <section class="py-6 bg-success text-white">
     <div class="container">
       <div class="row justify-content-center text-center">
-        <div class="col-lg-8" data-aos="fade-up">
+        <div class="col-lg-8 animate delay-1">
           <h2 class="fw-bold mb-4">Prêt à transformer votre pharmacie ?</h2>
           <p class="lead mb-5">Contactez-nous dès aujourd'hui pour une démonstration gratuite de nos solutions.</p>
           <a href="#map" class="btn btn-light btn-lg px-4 py-3 me-3">Nous rendre visite</a>
-          <a href="tel:+225XXXXXXXX" class="btn btn-outline-light btn-lg px-4 py-3">Nous appeler</a>
+          <a href="tel:+2250123456789" class="btn btn-outline-light btn-lg px-4 py-3">Nous appeler</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer (identique à votre page existante) -->
+  <!-- Footer -->
   <footer class="bg-dark text-white pt-6 pb-4">
-    <!-- Votre code footer existant -->
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 animate">
+          <h4 class="text-success mb-4"><i class="fas fa-plus-circle me-2"></i>INVENP+</h4>
+          <p class="mb-4">Plateforme innovante connectant patients et pharmacies pour un accès facilité aux médicaments et services pharmaceutiques.</p>
+          <div class="d-flex gap-3">
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white fs-5 social-link"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 animate delay-1">
+          <h5 class="mb-4">Liens Rapides</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">Accueil</a></li>
+            <li class="mb-2"><a href="recherche-medicament.html" class="text-white text-decoration-none">Recherche Médicament</a></li>
+            <li class="mb-2"><a href="recrutement-login.html" class="text-white text-decoration-none">Recrutement</a></li>
+            <li class="mb-2"><a href="partenaire-login.html" class="text-white text-decoration-none">Partenaires</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-2 col-md-4 animate delay-1">
+          <h5 class="mb-4">Services</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="recherche-medicament.html" class="text-white text-decoration-none">Disponibilité médicaments</a></li>
+            <li class="mb-2"><a href="recherche-medicament.html" class="text-white text-decoration-none">Comparaison de prix</a></li>
+            <li class="mb-2"><a href="partenaire-login.html" class="text-white text-decoration-none">Audit de stock</a></li>
+            <li class="mb-2"><a href="recrutement-login.html" class="text-white text-decoration-none">Recrutement personnel</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-white text-decoration-none">Conseils santé</a></li>
+          </ul>
+        </div>
+        
+        <div class="col-lg-4 col-md-4 animate delay-2">
+          <h5 class="mb-4">Contactez-nous</h5>
+          <ul class="list-unstyled">
+            <li class="mb-3 d-flex">
+              <i class="fas fa-map-marker-alt text-success mt-1 me-3"></i>
+              <span>Plateau, Rue des Pharmacies, Abidjan, Côte d'Ivoire</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-phone text-success mt-1 me-3"></i>
+              <span>+225 01 23 45 67 89</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-envelope text-success mt-1 me-3"></i>
+              <span>contact@invenplus.ci</span>
+            </li>
+            <li class="mb-3 d-flex">
+              <i class="fas fa-clock text-success mt-1 me-3"></i>
+              <span>Lun-Sam: 8h00-18h00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <hr class="my-4 border-secondary">
+      
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2023 INVENP+. Tous droits réservés.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white text-decoration-none me-3">Conditions d'utilisation</a>
+          <a href="#" class="text-white text-decoration-none">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Custom JS -->
+  <script src="../js/main.js"></script>
+  
   <script>
-    // Initialisation AOS
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
-
     // Gestion de la soumission du formulaire
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Ici vous ajouteriez le code pour envoyer le formulaire
-      // Par exemple avec Fetch API ou AJAX
+      // Validation du formulaire
+      if (window.inventPlusApp && window.inventPlusApp.validateForm) {
+        if (!window.inventPlusApp.validateForm(this)) {
+          return;
+        }
+      }
       
       // Simulation d'envoi réussi
-      alert('Merci pour votre message! Nous vous contacterons bientôt.');
-      this.reset();
-    });
-
-    // Animation navbar au scroll
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.top-navbar');
-      if (window.scrollY > 50) {
-        navbar.classList.add('navbar-scrolled');
+      if (window.inventPlusApp && window.inventPlusApp.showToast) {
+        window.inventPlusApp.showToast('Merci pour votre message! Nous vous contacterons bientôt.', 'success');
       } else {
-        navbar.classList.remove('navbar-scrolled');
+        alert('Merci pour votre message! Nous vous contacterons bientôt.');
       }
+      
+      this.reset();
     });
   </script>
 </body>
