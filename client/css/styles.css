@@ -40,7 +40,7 @@ body {
 
 /* ===== NAVBAR STYLES ===== */
 .top-navbar {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background: linear-gradient(135deg, var(--success-color) 0%, var(--primary-dark) 100%);
   color: var(--white);
   position: fixed;
   top: 0;
@@ -120,6 +120,8 @@ body {
   transition: var(--transition);
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .top-navbar .d-none.d-lg-flex a:hover {
@@ -130,7 +132,7 @@ body {
 
 /* Secondary Navbar */
 .secondary-navbar {
-  background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+  background: linear-gradient(135deg, var(--success-color) 0%, var(--primary-dark) 100%);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--shadow-sm);
   position: fixed;

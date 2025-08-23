@@ -208,13 +208,28 @@
                   <div class="row g-3">
                     <div class="col-md-4">
                       <label class="form-label">Ville</label>
-                      <select class="form-select" id="villeFilter">
+                      <select class="form-select" id="villeFilter" onchange="updateCommunes()">
                         <option value="">Toutes les villes</option>
                         <option value="abidjan">Abidjan</option>
                         <option value="bouake">Bouaké</option>
                         <option value="yamoussoukro">Yamoussoukro</option>
                         <option value="san-pedro">San Pedro</option>
                         <option value="korhogo">Korhogo</option>
+                        <option value="man">Man</option>
+                        <option value="gagnoa">Gagnoa</option>
+                        <option value="dabou">Dabou</option>
+                        <option value="agboville">Agboville</option>
+                        <option value="dimbokro">Dimbokro</option>
+                        <option value="bondoukou">Bondoukou</option>
+                        <option value="abengourou">Abengourou</option>
+                        <option value="grand-bassam">Grand-Bassam</option>
+                        <option value="assinie">Assinie</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label class="form-label">Commune/Quartier</label>
+                      <select class="form-select" id="communeFilter" disabled>
+                        <option value="">Sélectionnez d'abord une ville</option>
                       </select>
                     </div>
                     <div class="col-md-4">
@@ -228,6 +243,8 @@
                         <option value="pommade">Pommade</option>
                       </select>
                     </div>
+                  </div>
+                  <div class="row g-3 mt-3">
                     <div class="col-md-4">
                       <label class="form-label">Prix max</label>
                       <select class="form-select" id="prixFilter">
@@ -237,6 +254,12 @@
                         <option value="5000">Moins de 5000 FCFA</option>
                         <option value="10000">Moins de 10000 FCFA</option>
                       </select>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="alert alert-info mb-0">
+                        <i class="fas fa-clock me-2"></i>
+                        <strong>Temps de réponse :</strong> Maximum 10 minutes pour recevoir une réponse des pharmacies
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -263,6 +286,44 @@
               <button class="quick-tag" onclick="quickSearch('Oméprazole')">Oméprazole</button>
               <button class="quick-tag" onclick="quickSearch('Amoxicilline')">Amoxicilline</button>
               <button class="quick-tag" onclick="quickSearch('Doliprane')">Doliprane</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Progress Section -->
+    <section class="search-progress-section" id="searchProgressSection" style="display: none;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center">
+            <div class="search-progress-container">
+              <div class="progress-circle mb-4">
+                <i class="fas fa-search text-success"></i>
+              </div>
+              <h4 class="text-success mb-3">Recherche en cours...</h4>
+              <p class="text-muted mb-4">Votre demande a été transmise aux pharmacies de votre zone</p>
+              
+              <!-- Timer -->
+              <div class="timer-display mb-4">
+                <div class="timer-label">Temps restant :</div>
+                <div class="timer-countdown" id="timerCountdown">
+                  <span class="minutes">10</span>:<span class="seconds">00</span>
+                </div>
+              </div>
+              
+              <!-- Progress Bar -->
+              <div class="progress mb-4" style="height: 8px;">
+                <div class="progress-bar bg-success" id="progressBar" role="progressbar" style="width: 100%"></div>
+              </div>
+              
+              <!-- Status Messages -->
+              <div class="status-messages" id="statusMessages">
+                <div class="status-item">
+                  <i class="fas fa-bell text-success me-2"></i>
+                  <span>Notifications envoyées aux pharmacies</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

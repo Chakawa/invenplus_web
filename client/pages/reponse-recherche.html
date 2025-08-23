@@ -202,25 +202,33 @@
                 Filtres
               </h5>
               
-              <div class="filter-group">
-                <label class="form-label fw-bold">Ville</label>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="abidjan" id="abidjan">
-                  <label class="form-check-label" for="abidjan">Abidjan</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="bouake" id="bouake">
-                  <label class="form-check-label" for="bouake">Bouaké</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="yamoussoukro" id="yamoussoukro">
-                  <label class="form-check-label" for="yamoussoukro">Yamoussoukro</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="san-pedro" id="san-pedro">
-                  <label class="form-check-label" for="san-pedro">San Pedro</label>
-                </div>
-              </div>
+                             <div class="filter-group">
+                 <label class="form-label fw-bold">Ville</label>
+                 <select class="form-select" id="villeFilterResults" onchange="updateCommunesResults()">
+                   <option value="">Toutes les villes</option>
+                   <option value="abidjan">Abidjan</option>
+                   <option value="bouake">Bouaké</option>
+                   <option value="yamoussoukro">Yamoussoukro</option>
+                   <option value="san-pedro">San Pedro</option>
+                   <option value="korhogo">Korhogo</option>
+                   <option value="man">Man</option>
+                   <option value="gagnoa">Gagnoa</option>
+                   <option value="dabou">Dabou</option>
+                   <option value="agboville">Agboville</option>
+                   <option value="dimbokro">Dimbokro</option>
+                   <option value="bondoukou">Bondoukou</option>
+                   <option value="abengourou">Abengourou</option>
+                   <option value="grand-bassam">Grand-Bassam</option>
+                   <option value="assinie">Assinie</option>
+                 </select>
+               </div>
+               
+               <div class="filter-group">
+                 <label class="form-label fw-bold">Commune/Quartier</label>
+                 <select class="form-select" id="communeFilterResults" disabled>
+                   <option value="">Sélectionnez d'abord une ville</option>
+                 </select>
+               </div>
               
               <div class="filter-group">
                 <label class="form-label fw-bold">Forme galénique</label>

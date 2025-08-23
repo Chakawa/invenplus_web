@@ -4,10 +4,62 @@
 let currentSearchTerm = '';
 let currentFilters = {
   ville: [],
+  commune: '',
   forme: [],
   prix: [],
   disponibilite: []
 };
+
+// Données des villes et communes de Côte d'Ivoire
+const villesCommunes = {
+  abidjan: [
+    'Plateau', 'Cocody', 'Yopougon', 'Marcory', 'Treichville', 'Adjamé', 
+    'Abobo', 'Port-Bouët', 'Koumassi', 'Bingerville', 'Songon', 'Anyama'
+  ],
+  bouake: [
+    'Centre-ville', 'Air France', 'Brobo', 'Sakassou', 'Béoumi', 'Botro'
+  ],
+  yamoussoukro: [
+    'Centre-ville', 'Kossou', 'Tiébissou', 'Attiégouakro', 'Lolobo'
+  ],
+  'san-pedro': [
+    'Centre-ville', 'Grand-Béréby', 'Tabou', 'Sassandra'
+  ],
+  korhogo: [
+    'Centre-ville', 'Ferkessédougou', 'Boundiali', 'Sinématiali'
+  ],
+  man: [
+    'Centre-ville', 'Danané', 'Zouan-Hounien', 'Biankouma'
+  ],
+  gagnoa: [
+    'Centre-ville', 'Oumé', 'Sinfra', 'Issia'
+  ],
+  dabou: [
+    'Centre-ville', 'Jacqueville', 'Grand-Lahou'
+  ],
+  agboville: [
+    'Centre-ville', 'Adzopé', 'Akoupé', 'Afféry'
+  ],
+  dimbokro: [
+    'Centre-ville', 'Bocanda', 'Daoukro', 'M\'Bahiakro'
+  ],
+  bondoukou: [
+    'Centre-ville', 'Tanda', 'Bouna', 'Transua'
+  ],
+  abengourou: [
+    'Centre-ville', 'Agnibilékrou', 'Bettie', 'M\'Batto'
+  ],
+  'grand-bassam': [
+    'Centre-ville', 'Moossou', 'Bracodi', 'Vridi'
+  ],
+  assinie: [
+    'Centre-ville', 'Mafia', 'M\'Bokro', 'Adjin'
+  ]
+};
+
+// Variables pour le timer
+let searchTimer = null;
+let timeRemaining = 600; // 10 minutes en secondes
 
 // Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', function() {
@@ -63,12 +115,6 @@ function setupEventListeners() {
 
 // Configuration des écouteurs d'événements pour les filtres
 function setupFilterEventListeners() {
-  // Filtres de ville
-  const villeFilters = document.querySelectorAll('input[value^="abidjan"], input[value^="bouake"], input[value^="yamoussoukro"], input[value^="san-pedro"]');
-  villeFilters.forEach(filter => {
-    filter.addEventListener('change', updateFilters);
-  });
-  
   // Filtres de forme
   const formeFilters = document.querySelectorAll('input[value^="comprime"], input[value^="sirop"], input[value^="gelule"], input[value^="injection"]');
   formeFilters.forEach(filter => {
@@ -90,7 +136,8 @@ function setupFilterEventListeners() {
 
 // Mise à jour des filtres
 function updateFilters() {
-  currentFilters.ville = getCheckedValues('input[value^="abidjan"], input[value^="bouake"], input[value^="yamoussoukro"], input[value^="san-pedro"]');
+  currentFilters.ville = document.getElementById('villeFilter').value;
+  currentFilters.commune = document.getElementById('communeFilter').value;
   currentFilters.forme = getCheckedValues('input[value^="comprime"], input[value^="sirop"], input[value^="gelule"], input[value^="injection"]');
   currentFilters.prix = getCheckedValues('input[value^="1000"], input[value^="2000"], input[value^="5000"], input[value^="10000"]');
   currentFilters.disponibilite = getCheckedValues('input[value^="disponible"], input[value^="rupture"]');
@@ -121,18 +168,23 @@ function quickSearch(term) {
 function performSearch(searchTerm) {
   currentSearchTerm = searchTerm;
   
-  // Afficher l'indicateur de chargement
-  showLoadingState();
+  // Vérifier que la ville est sélectionnée
+  if (!currentFilters.ville) {
+    showAlert('Veuillez sélectionner une ville pour effectuer la recherche', 'warning');
+    return;
+  }
   
-  // Simuler une recherche (remplacer par un appel API réel)
-  setTimeout(() => {
-    const results = simulateSearchResults(searchTerm);
-    displaySearchResults(results);
-    hideLoadingState();
-    
-    // Mettre à jour l'URL
-    updateURL(searchTerm);
-  }, 1500);
+  // Afficher la section de progression
+  showSearchProgress();
+  
+  // Démarrer le timer de 10 minutes
+  startSearchTimer();
+  
+  // Simuler l'envoi aux pharmacies
+  simulatePharmacyNotifications();
+  
+  // Mettre à jour l'URL
+  updateURL(searchTerm);
 }
 
 // Simulation des résultats de recherche
@@ -523,6 +575,214 @@ function redirectToSearch() {
   }
 }
 
+// Fonction pour mettre à jour les communes selon la ville sélectionnée
+function updateCommunes() {
+  const villeSelect = document.getElementById('villeFilter');
+  const communeSelect = document.getElementById('communeFilter');
+  const selectedVille = villeSelect.value;
+  
+  // Réinitialiser et désactiver le select des communes
+  communeSelect.innerHTML = '<option value="">Sélectionnez une commune/quartier</option>';
+  communeSelect.disabled = true;
+  
+  if (selectedVille && villesCommunes[selectedVille]) {
+    // Activer le select des communes
+    communeSelect.disabled = false;
+    
+    // Ajouter les communes de la ville sélectionnée
+    villesCommunes[selectedVille].forEach(commune => {
+      const option = document.createElement('option');
+      option.value = commune.toLowerCase().replace(/\s+/g, '-');
+      option.textContent = commune;
+      communeSelect.appendChild(option);
+    });
+  }
+  
+  // Mettre à jour les filtres
+  updateFilters();
+}
+
+// Afficher la section de progression de recherche
+function showSearchProgress() {
+  const searchProgressSection = document.getElementById('searchProgressSection');
+  const resultsSection = document.getElementById('resultsSection');
+  const noResultsSection = document.getElementById('noResultsSection');
+  
+  if (searchProgressSection) searchProgressSection.style.display = 'block';
+  if (resultsSection) resultsSection.style.display = 'none';
+  if (noResultsSection) noResultsSection.style.display = 'none';
+  
+  // Réinitialiser le timer
+  timeRemaining = 600;
+  updateTimerDisplay();
+}
+
+// Démarrer le timer de recherche
+function startSearchTimer() {
+  if (searchTimer) {
+    clearInterval(searchTimer);
+  }
+  
+  searchTimer = setInterval(() => {
+    timeRemaining--;
+    updateTimerDisplay();
+    updateProgressBar();
+    
+    if (timeRemaining <= 0) {
+      clearInterval(searchTimer);
+      handleSearchTimeout();
+    }
+  }, 1000);
+}
+
+// Mettre à jour l'affichage du timer
+function updateTimerDisplay() {
+  const minutes = Math.floor(timeRemaining / 60);
+  const seconds = timeRemaining % 60;
+  
+  const minutesElement = document.querySelector('.timer-countdown .minutes');
+  const secondsElement = document.querySelector('.timer-countdown .seconds');
+  
+  if (minutesElement && secondsElement) {
+    minutesElement.textContent = minutes.toString().padStart(2, '0');
+    secondsElement.textContent = seconds.toString().padStart(2, '0');
+  }
+}
+
+// Mettre à jour la barre de progression
+function updateProgressBar() {
+  const progressBar = document.getElementById('progressBar');
+  if (progressBar) {
+    const progress = (timeRemaining / 600) * 100;
+    progressBar.style.width = progress + '%';
+    
+    // Changer la couleur selon le temps restant
+    if (timeRemaining <= 60) {
+      progressBar.className = 'progress-bar bg-danger';
+    } else if (timeRemaining <= 300) {
+      progressBar.className = 'progress-bar bg-warning';
+    } else {
+      progressBar.className = 'progress-bar bg-success';
+    }
+  }
+}
+
+// Gérer l'expiration du temps de recherche
+function handleSearchTimeout() {
+  const statusMessages = document.getElementById('statusMessages');
+  if (statusMessages) {
+    statusMessages.innerHTML = `
+      <div class="status-item">
+        <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+        <span>Temps écoulé. Aucune pharmacie n'a répondu dans les 10 minutes.</span>
+      </div>
+      <div class="status-item">
+        <i class="fas fa-info-circle text-info me-2"></i>
+        <span>Vous pouvez relancer une nouvelle recherche ou essayer avec d'autres critères.</span>
+      </div>
+    `;
+  }
+  
+  // Afficher un bouton pour relancer la recherche
+  const searchProgressContainer = document.querySelector('.search-progress-container');
+  if (searchProgressContainer) {
+    const retryButton = document.createElement('div');
+    retryButton.className = 'text-center mt-4';
+    retryButton.innerHTML = `
+      <button class="btn btn-success btn-lg" onclick="retrySearch()">
+        <i class="fas fa-redo me-2"></i>Relancer la recherche
+      </button>
+    `;
+    searchProgressContainer.appendChild(retryButton);
+  }
+}
+
+// Simuler les notifications aux pharmacies
+function simulatePharmacyNotifications() {
+  const statusMessages = document.getElementById('statusMessages');
+  if (!statusMessages) return;
+  
+  // Ajouter des messages de statut progressifs
+  setTimeout(() => {
+    addStatusMessage('Recherche en cours dans votre zone géographique...', 'info');
+  }, 1000);
+  
+  setTimeout(() => {
+    addStatusMessage('Notifications envoyées aux pharmacies partenaires', 'success');
+  }, 3000);
+  
+  setTimeout(() => {
+    addStatusMessage('En attente de réponse des pharmacies...', 'info');
+  }, 5000);
+  
+  // Simuler une réponse de pharmacie après 5-8 minutes
+  const responseTime = Math.random() * 180 + 300; // Entre 5 et 8 minutes
+  setTimeout(() => {
+    if (timeRemaining > 0) {
+      simulatePharmacyResponse();
+    }
+  }, responseTime * 1000);
+}
+
+// Ajouter un message de statut
+function addStatusMessage(message, type = 'info') {
+  const statusMessages = document.getElementById('statusMessages');
+  if (!statusMessages) return;
+  
+  const statusItem = document.createElement('div');
+  statusItem.className = `status-item ${type === 'success' ? 'bg-success bg-opacity-10' : 'bg-info bg-opacity-10'}`;
+  statusItem.innerHTML = `
+    <i class="fas fa-${type === 'success' ? 'check-circle text-success' : 'info-circle text-info'} me-2"></i>
+    <span>${message}</span>
+  `;
+  
+  statusMessages.appendChild(statusItem);
+}
+
+// Simuler une réponse de pharmacie
+function simulatePharmacyResponse() {
+  clearInterval(searchTimer);
+  
+  addStatusMessage('Pharmacie trouvée ! Vérification de la disponibilité...', 'success');
+  
+  setTimeout(() => {
+    addStatusMessage('Médicament disponible ! Affichage des résultats...', 'success');
+    
+    // Afficher les résultats
+    const results = simulateSearchResults(currentSearchTerm);
+    displaySearchResults(results);
+    
+    // Masquer la section de progression
+    const searchProgressSection = document.getElementById('searchProgressSection');
+    if (searchProgressSection) {
+      searchProgressSection.style.display = 'none';
+    }
+  }, 2000);
+}
+
+// Relancer la recherche
+function retrySearch() {
+  // Masquer la section de progression
+  const searchProgressSection = document.getElementById('searchProgressSection');
+  if (searchProgressSection) {
+    searchProgressSection.style.display = 'none';
+  }
+  
+  // Réinitialiser le formulaire
+  document.getElementById('medicamentSearchForm').reset();
+  document.getElementById('communeFilter').innerHTML = '<option value="">Sélectionnez d\'abord une ville</option>';
+  document.getElementById('communeFilter').disabled = true;
+  
+  // Réinitialiser les filtres
+  currentFilters = {
+    ville: '',
+    commune: '',
+    forme: [],
+    prix: [],
+    disponibilite: []
+  };
+}
+
 // Export des fonctions pour utilisation globale
 window.medicamentSearch = {
   performSearch,
@@ -534,6 +794,8 @@ window.medicamentSearch = {
   setNotification,
   clearSearch,
   applyFilters,
-  redirectToSearch
+  redirectToSearch,
+  updateCommunes,
+  retrySearch
 };
 
