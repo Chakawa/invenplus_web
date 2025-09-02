@@ -72,7 +72,8 @@
         <li class="nav-item">
           <a class="nav-link" href="presentation.html"><i class="fas fa-hand-holding-medical me-1"></i> Prestation</a>
         </li>
-        <li class="nav-link active" href="recherche-medicament.html"><i class="fas fa-search me-1"></i> Recherche Médicament</a>
+        <li class="nav-item">
+          <a class="nav-link active" href="recherche-medicament.html"><i class="fas fa-search me-1"></i> Recherche Médicament</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="recrutement.html"><i class="fas fa-user-tie me-1"></i> Recrutement</a>
@@ -168,20 +169,20 @@
             <div class="search-summary">
               <h1 class="search-summary-title">
                 <i class="fas fa-search text-success me-2"></i>
-                Résultats pour "<span id="searchTerm" class="text-success">Paracétamol</span>"
+                Pharmacies disponibles pour "<span id="searchTerm" class="text-success">Paracétamol</span>"
               </h1>
               <div class="search-filters-summary">
                 <span class="filter-badge">
                   <i class="fas fa-map-marker-alt me-1"></i>
-                  <span id="locationFilter">Toutes les villes</span>
+                  <span id="locationFilter">Abidjan et environs</span>
                 </span>
                 <span class="filter-badge">
                   <i class="fas fa-pills me-1"></i>
-                  <span id="formeFilter">Toutes les formes</span>
+                  <span id="formeFilter">Toutes formes</span>
                 </span>
                 <span class="filter-badge">
                   <i class="fas fa-tag me-1"></i>
-                  <span id="prixFilter">Tous les prix</span>
+                  <span id="prixFilter">Meilleurs prix</span>
                 </span>
               </div>
             </div>
@@ -199,13 +200,13 @@
             <div class="filters-sidebar">
               <h5 class="filters-title">
                 <i class="fas fa-filter text-success me-2"></i>
-                Filtres
+                Affiner la Recherche
               </h5>
               
                              <div class="filter-group">
-                 <label class="form-label fw-bold">Ville</label>
+                 <label class="form-label fw-bold">Zone Géographique</label>
                  <select class="form-select" id="villeFilterResults" onchange="updateCommunesResults()">
-                   <option value="">Toutes les villes</option>
+                   <option value="">Toutes les zones</option>
                    <option value="abidjan">Abidjan</option>
                    <option value="bouake">Bouaké</option>
                    <option value="yamoussoukro">Yamoussoukro</option>
@@ -231,7 +232,7 @@
                </div>
               
               <div class="filter-group">
-                <label class="form-label fw-bold">Forme galénique</label>
+                <label class="form-label fw-bold">Type de Médicament</label>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="comprime" id="comprime">
                   <label class="form-check-label" for="comprime">Comprimé</label>
@@ -251,7 +252,7 @@
               </div>
               
               <div class="filter-group">
-                <label class="form-label fw-bold">Prix</label>
+                <label class="form-label fw-bold">Gamme de Prix</label>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="1000" id="prix1">
                   <label class="form-check-label" for="prix1">Moins de 1000 FCFA</label>
@@ -271,14 +272,14 @@
               </div>
               
               <div class="filter-group">
-                <label class="form-label fw-bold">Disponibilité</label>
+                <label class="form-label fw-bold">État du Stock</label>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="disponible" id="disponible" checked>
-                  <label class="form-check-label" for="disponible">En stock</label>
+                  <label class="form-check-label" for="disponible">Disponible maintenant</label>
                 </div>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="rupture" id="rupture">
-                  <label class="form-check-label" for="rupture">En rupture</label>
+                  <label class="form-check-label" for="rupture">Bientôt disponible</label>
                 </div>
               </div>
               
@@ -293,16 +294,16 @@
           <div class="col-lg-9">
             <div class="results-controls">
               <div class="results-count">
-                <span id="totalResults">12</span> résultat(s) trouvé(s)
+                <span id="totalResults">4</span> pharmacie(s) avec ce médicament
               </div>
               <div class="results-sort">
-                <label class="form-label me-2">Trier par:</label>
+                <label class="form-label me-2">Classer par :</label>
                 <select class="form-select form-select-sm" id="sortSelect">
-                  <option value="relevance">Pertinence</option>
+                  <option value="relevance">Recommandé</option>
                   <option value="price-asc">Prix croissant</option>
                   <option value="price-desc">Prix décroissant</option>
                   <option value="distance">Distance</option>
-                  <option value="rating">Note</option>
+                  <option value="rating">Mieux notés</option>
                 </select>
               </div>
             </div>
@@ -337,23 +338,23 @@
                     </div>
                     <div class="info-item">
                       <i class="fas fa-clock text-muted"></i>
-                      <span>Ouvert jusqu'à 18h00</span>
+                      <span>Ouvert jusqu'à 20h00</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-star text-warning"></i>
-                      <span>4.8/5 (127 avis)</span>
+                      <span>4.8/5 (143 avis)</span>
                     </div>
                   </div>
                   
                   <div class="result-pricing">
                     <div class="price-info">
-                      <span class="current-price">750 FCFA</span>
-                      <span class="old-price">850 FCFA</span>
-                      <span class="discount">-12%</span>
+                      <span class="current-price">650 FCFA</span>
+                      <span class="old-price">750 FCFA</span>
+                      <span class="discount">-13%</span>
                     </div>
                     <div class="stock-info">
                       <span class="stock-status available">En stock</span>
-                      <small class="stock-quantity">Quantité: 45</small>
+                      <small class="stock-quantity">Stock: 52 unités</small>
                     </div>
                   </div>
                 </div>
@@ -361,15 +362,15 @@
                 <div class="result-footer">
                   <button class="btn btn-success" onclick="contactPharmacy('pharmacie-centrale')">
                     <i class="fas fa-phone me-2"></i>
-                    Contacter
+                    Appeler
                   </button>
                   <button class="btn btn-outline-success" onclick="getDirections('pharmacie-centrale')">
-                    <i class="fas fa-directions me-2"></i>
+                    <i class="fas fa-route me-2"></i>
                     Itinéraire
                   </button>
                   <button class="btn btn-outline-primary" onclick="setNotification('paracetamol-500mg')">
                     <i class="fas fa-bell me-2"></i>
-                    Alerte stock
+                    Alerte
                   </button>
                 </div>
               </div>
@@ -395,47 +396,47 @@
                   <div class="result-info">
                     <div class="info-item">
                       <i class="fas fa-building text-muted"></i>
-                      <span>Pharmacie du Marché</span>
+                      <span>Pharmacie Moderne</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-map-marker-alt text-muted"></i>
-                      <span>Yopougon, Abidjan</span>
+                      <span>Cocody, Abidjan</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-clock text-muted"></i>
-                      <span>Ouvert jusqu'à 19h00</span>
+                      <span>Ouvert jusqu'à 19h30</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-star text-warning"></i>
-                      <span>4.6/5 (89 avis)</span>
+                      <span>4.7/5 (96 avis)</span>
                     </div>
                   </div>
                   
                   <div class="result-pricing">
                     <div class="price-info">
-                      <span class="current-price">800 FCFA</span>
+                      <span class="current-price">700 FCFA</span>
                       <span class="old-price"></span>
                       <span class="discount"></span>
                     </div>
                     <div class="stock-info">
                       <span class="stock-status available">En stock</span>
-                      <small class="stock-quantity">Quantité: 23</small>
+                      <small class="stock-quantity">Stock: 38 unités</small>
                     </div>
                   </div>
                 </div>
                 
                 <div class="result-footer">
-                  <button class="btn btn-success" onclick="contactPharmacy('pharmacie-marche')">
+                  <button class="btn btn-success" onclick="contactPharmacy('pharmacie-moderne')">
                     <i class="fas fa-phone me-2"></i>
-                    Contacter
+                    Appeler
                   </button>
-                  <button class="btn btn-outline-success" onclick="getDirections('pharmacie-marche')">
-                    <i class="fas fa-directions me-2"></i>
+                  <button class="btn btn-outline-success" onclick="getDirections('pharmacie-moderne')">
+                    <i class="fas fa-route me-2"></i>
                     Itinéraire
                   </button>
                   <button class="btn btn-outline-primary" onclick="setNotification('paracetamol-500mg')">
                     <i class="fas fa-bell me-2"></i>
-                    Alerte stock
+                    Alerte
                   </button>
                 </div>
               </div>
@@ -444,7 +445,7 @@
               <div class="result-card">
                 <div class="result-header">
                   <div class="result-title">
-                    <h5 class="medicament-name">Paracétamol 500mg</h5>
+                    <h5 class="medicament-name">Paracétamol 1000mg</h5>
                     <span class="medicament-form">Sirop</span>
                   </div>
                   <div class="result-actions">
@@ -461,54 +462,120 @@
                   <div class="result-info">
                     <div class="info-item">
                       <i class="fas fa-building text-muted"></i>
-                      <span>Pharmacie Saint-Jean</span>
+                      <span>Pharmacie de la Paix</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-map-marker-alt text-muted"></i>
-                      <span>Cocody, Abidjan</span>
+                      <span>Marcory, Abidjan</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-clock text-muted"></i>
-                      <span>Ouvert jusqu'à 17h30</span>
+                      <span>Ouvert jusqu'à 21h00</span>
                     </div>
                     <div class="info-item">
                       <i class="fas fa-star text-warning"></i>
-                      <span>4.9/5 (156 avis)</span>
+                      <span>4.9/5 (178 avis)</span>
                     </div>
                   </div>
                   
                   <div class="result-pricing">
                     <div class="price-info">
-                      <span class="current-price">1200 FCFA</span>
+                      <span class="current-price">950 FCFA</span>
                       <span class="old-price"></span>
                       <span class="discount"></span>
                     </div>
                     <div class="stock-info">
                       <span class="stock-status available">En stock</span>
-                      <small class="stock-quantity">Quantité: 12</small>
+                      <small class="stock-quantity">Stock: 15 unités</small>
                     </div>
                   </div>
                 </div>
                 
                 <div class="result-footer">
-                  <button class="btn btn-success" onclick="contactPharmacy('pharmacie-saint-jean')">
+                  <button class="btn btn-success" onclick="contactPharmacy('pharmacie-paix')">
                     <i class="fas fa-phone me-2"></i>
-                    Contacter
+                    Appeler
                   </button>
-                  <button class="btn btn-outline-success" onclick="getDirections('pharmacie-saint-jean')">
-                    <i class="fas fa-directions me-2"></i>
+                  <button class="btn btn-outline-success" onclick="getDirections('pharmacie-paix')">
+                    <i class="fas fa-route me-2"></i>
                     Itinéraire
                   </button>
                   <button class="btn btn-outline-primary" onclick="setNotification('paracetamol-500mg')">
                     <i class="fas fa-bell me-2"></i>
-                    Alerte stock
+                    Alerte
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Nouveau résultat 4 -->
+              <div class="result-card">
+                <div class="result-header">
+                  <div class="result-title">
+                    <h5 class="medicament-name">Paracétamol 200mg</h5>
+                    <span class="medicament-form">Gélule</span>
+                  </div>
+                  <div class="result-actions">
+                    <button class="btn btn-sm btn-outline-success" onclick="toggleFavorite(this)">
+                      <i class="far fa-heart"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary" onclick="shareResult(this)">
+                      <i class="fas fa-share-alt"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="result-content">
+                  <div class="result-info">
+                    <div class="info-item">
+                      <i class="fas fa-building text-muted"></i>
+                      <span>Pharmacie Express</span>
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-map-marker-alt text-muted"></i>
+                      <span>Yopougon, Abidjan</span>
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-clock text-muted"></i>
+                      <span>Ouvert 24h/24</span>
+                    </div>
+                    <div class="info-item">
+                      <i class="fas fa-star text-warning"></i>
+                      <span>4.5/5 (67 avis)</span>
+                    </div>
+                  </div>
+                  
+                  <div class="result-pricing">
+                    <div class="price-info">
+                      <span class="current-price">850 FCFA</span>
+                      <span class="old-price">950 FCFA</span>
+                      <span class="discount">-11%</span>
+                    </div>
+                    <div class="stock-info">
+                      <span class="stock-status available">En stock</span>
+                      <small class="stock-quantity">Stock: 28 unités</small>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="result-footer">
+                  <button class="btn btn-success" onclick="contactPharmacy('pharmacie-express')">
+                    <i class="fas fa-phone me-2"></i>
+                    Appeler
+                  </button>
+                  <button class="btn btn-outline-success" onclick="getDirections('pharmacie-express')">
+                    <i class="fas fa-route me-2"></i>
+                    Itinéraire
+                  </button>
+                  <button class="btn btn-outline-primary" onclick="setNotification('paracetamol-200mg')">
+                    <i class="fas fa-bell me-2"></i>
+                    Alerte
                   </button>
                 </div>
               </div>
             </div>
             
             <!-- Pagination -->
-            <nav aria-label="Navigation des résultats" class="mt-4">
+            <nav aria-label="Pages de résultats" class="mt-4">
               <ul class="pagination justify-content-center">
                 <li class="page-item disabled">
                   <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Précédent</a>
@@ -532,8 +599,8 @@
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h4 class="text-success mb-4"><i class="fas fa-plus-circle me-2"></i>INVENP+</h4>
-          <p class="mb-4">Plateforme innovante connectant patients et pharmacies pour un accès facilité aux médicaments et services pharmaceutiques.</p>
+          <h4 class="text-success mb-4"><i class="fas fa-plus-circle me-2"></i>INVENTP+</h4>
+          <p class="mb-4">Plateforme leader en Côte d'Ivoire connectant patients et pharmacies pour un accès facilité aux médicaments et services pharmaceutiques de qualité.</p>
           <div class="d-flex gap-3">
             <a href="#" class="text-white fs-5 social-link"><i class="fab fa-facebook"></i></a>
             <a href="#" class="text-white fs-5 social-link"><i class="fab fa-twitter"></i></a>
@@ -591,7 +658,7 @@
       
       <div class="row">
         <div class="col-md-6 text-center text-md-start">
-          <p class="mb-0">&copy; 2023 INVENP+. Tous droits réservés.</p>
+          <p class="mb-0">&copy; 2024 INVENTP+. Tous droits réservés.</p>
         </div>
         <div class="col-md-6 text-center text-md-end">
           <a href="#" class="text-white text-decoration-none me-3">Conditions d'utilisation</a>

@@ -170,8 +170,10 @@ function performSearch(searchTerm) {
   
   // Vérifier que la ville est sélectionnée
   if (!currentFilters.ville) {
-    showAlert('Veuillez sélectionner une ville pour effectuer la recherche', 'warning');
-    return;
+    // Utiliser Abidjan par défaut si aucune ville n'est sélectionnée
+    currentFilters.ville = 'abidjan';
+    document.getElementById('villeFilter').value = 'abidjan';
+    updateCommunes();
   }
   
   // Afficher la section de progression
@@ -192,51 +194,67 @@ function simulateSearchResults(searchTerm) {
   const mockResults = [
     {
       id: 1,
-      nom: searchTerm + ' 500mg',
+      nom: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) + ' 500mg',
       forme: 'Comprimé',
       pharmacie: 'Pharmacie Centrale',
       ville: 'Abidjan',
       quartier: 'Plateau',
-      prix: 750,
-      ancienPrix: 850,
-      reduction: 12,
+      prix: 650,
+      ancienPrix: 750,
+      reduction: 13,
       stock: 'En stock',
-      quantite: 45,
+      quantite: 52,
       note: 4.8,
-      avis: 127,
-      horaires: 'Ouvert jusqu\'à 18h00'
+      avis: 143,
+      horaires: 'Ouvert jusqu\'à 20h00'
     },
     {
       id: 2,
-      nom: searchTerm + ' 500mg',
+      nom: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) + ' 500mg',
       forme: 'Comprimé',
-      pharmacie: 'Pharmacie du Marché',
+      pharmacie: 'Pharmacie Moderne',
       ville: 'Abidjan',
-      quartier: 'Yopougon',
-      prix: 800,
+      quartier: 'Cocody',
+      prix: 700,
       ancienPrix: null,
       reduction: null,
       stock: 'En stock',
-      quantite: 23,
-      note: 4.6,
-      avis: 89,
-      horaires: 'Ouvert jusqu\'à 19h00'
+      quantite: 38,
+      note: 4.7,
+      avis: 96,
+      horaires: 'Ouvert jusqu\'à 19h30'
     },
     {
       id: 3,
-      nom: searchTerm + ' 500mg',
+      nom: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) + ' 1000mg',
       forme: 'Sirop',
-      pharmacie: 'Pharmacie Saint-Jean',
+      pharmacie: 'Pharmacie de la Paix',
       ville: 'Abidjan',
-      quartier: 'Cocody',
-      prix: 1200,
+      quartier: 'Marcory',
+      prix: 950,
       ancienPrix: null,
       reduction: null,
       stock: 'En stock',
-      quantite: 12,
+      quantite: 15,
       note: 4.9,
-      avis: 156,
-      horaires: 'Ouvert jusqu\'à 17h30'
+      avis: 178,
+      horaires: 'Ouvert jusqu\'à 21h00'
+    },
+    {
+      id: 4,
+      nom: searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1) + ' 200mg',
+      forme: 'Gélule',
+      pharmacie: 'Pharmacie Express',
+      ville: 'Abidjan',
+      quartier: 'Yopougon',
+      prix: 850,
+      ancienPrix: 950,
+      reduction: 11,
+      stock: 'En stock',
+      quantite: 28,
+      note: 4.5,
+      avis: 67,
+      horaires: 'Ouvert 24h/24'
     }
   ];
   
@@ -482,28 +500,40 @@ function shareResult(button) {
   if (navigator.share) {
     navigator.share({
       title: 'Médicament trouvé sur InventPlus',
-      text: 'J\'ai trouvé ce médicament sur InventPlus',
+      text: 'J\'ai trouvé ce médicament disponible sur InventPlus',
       url: window.location.href
     });
   } else {
     // Fallback pour les navigateurs qui ne supportent pas l'API Web Share
     const url = window.location.href;
     navigator.clipboard.writeText(url).then(() => {
-      showAlert('Lien copié dans le presse-papiers', 'success');
+      showAlert('Lien partagé copié avec succès !', 'success');
     });
   }
 }
 
 function contactPharmacy(pharmacyId) {
-  showAlert('Fonctionnalité de contact en cours de développement', 'info');
+  showAlert('Redirection vers l\'application d\'appel...', 'info');
+  // Simuler l'ouverture de l'application d'appel
+  setTimeout(() => {
+    window.open('tel:+2250123456789', '_self');
+  }, 1000);
 }
 
 function getDirections(pharmacyId) {
-  showAlert('Fonctionnalité d\'itinéraire en cours de développement', 'info');
+  showAlert('Ouverture de Google Maps...', 'info');
+  // Simuler l'ouverture de Google Maps
+  setTimeout(() => {
+    window.open('https://maps.google.com/?q=pharmacie+abidjan', '_blank');
+  }, 1000);
 }
 
 function setNotification(medicamentId) {
-  showAlert('Alerte de stock configurée', 'success');
+  showAlert('Alerte de stock configurée avec succès !', 'success');
+}
+
+function setStockAlert() {
+  showAlert('Alerte créée ! Vous serez notifié dès que le médicament sera disponible.', 'success');
 }
 
 function clearSearch() {
@@ -704,19 +734,23 @@ function simulatePharmacyNotifications() {
   
   // Ajouter des messages de statut progressifs
   setTimeout(() => {
-    addStatusMessage('Recherche en cours dans votre zone géographique...', 'info');
+    addStatusMessage('Analyse de votre zone géographique en cours...', 'info');
   }, 1000);
   
   setTimeout(() => {
-    addStatusMessage('Notifications envoyées aux pharmacies partenaires', 'success');
+    addStatusMessage('Notifications transmises à 12 pharmacies de votre secteur', 'success');
   }, 3000);
   
   setTimeout(() => {
-    addStatusMessage('En attente de réponse des pharmacies...', 'info');
+    addStatusMessage('Pharmacies contactées - Réponses en cours...', 'info');
   }, 5000);
   
-  // Simuler une réponse de pharmacie après 5-8 minutes
-  const responseTime = Math.random() * 180 + 300; // Entre 5 et 8 minutes
+  setTimeout(() => {
+    addStatusMessage('Première pharmacie a confirmé la disponibilité !', 'success');
+  }, 8000);
+  
+  // Simuler une réponse de pharmacie après 8-15 secondes pour la démo
+  const responseTime = Math.random() * 7 + 8; // Entre 8 et 15 secondes
   setTimeout(() => {
     if (timeRemaining > 0) {
       simulatePharmacyResponse();
@@ -743,10 +777,10 @@ function addStatusMessage(message, type = 'info') {
 function simulatePharmacyResponse() {
   clearInterval(searchTimer);
   
-  addStatusMessage('Pharmacie trouvée ! Vérification de la disponibilité...', 'success');
+  addStatusMessage('Excellent ! Plusieurs pharmacies ont confirmé la disponibilité', 'success');
   
   setTimeout(() => {
-    addStatusMessage('Médicament disponible ! Affichage des résultats...', 'success');
+    addStatusMessage('Affichage des meilleures offres disponibles...', 'success');
     
     // Afficher les résultats
     const results = simulateSearchResults(currentSearchTerm);
@@ -757,7 +791,7 @@ function simulatePharmacyResponse() {
     if (searchProgressSection) {
       searchProgressSection.style.display = 'none';
     }
-  }, 2000);
+  }, 1500);
 }
 
 // Relancer la recherche
