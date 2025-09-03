@@ -513,19 +513,67 @@ function shareResult(button) {
 }
 
 function contactPharmacy(pharmacyId) {
-  showAlert('Redirection vers l\'application d\'appel...', 'info');
-  // Simuler l'ouverture de l'application d'appel
-  setTimeout(() => {
-    window.open('tel:+2250123456789', '_self');
-  }, 1000);
+  // Utiliser le service de géolocalisation pour contacter la pharmacie
+  if (window.geolocationService) {
+    // Trouver la pharmacie par son ID ou nom
+    const pharmacyData = window.geolocationService.getNearbyPharmacies().find(p => 
+      p.name.toLowerCase().includes(pharmacyId.replace('-', ' '))
+    );
+    
+    if (pharmacyData) {
+      window.geolocationService.contactPharmacy(pharmacyData.id);
+    } else {
+      // Fallback pour les pharmacies des résultats de recherche
+      const phoneNumbers = {
+        'pharmacie-centrale': '+225 01 23 45 67 89',
+        'pharmacie-moderne': '+225 01 23 45 67 90',
+        'pharmacie-paix': '+225 01 23 45 67 91',
+        'pharmacie-express': '+225 01 23 45 67 92'
+      };
+      
+      const phone = phoneNumbers[pharmacyId] || '+225 01 23 45 67 89';
+      window.open(`tel:${phone}`, '_self');
+      showAlert('Appel en cours...', 'info');
+    }
+  } else {
+    // Fallback si le service de géolocalisation n'est pas disponible
+    showAlert('Redirection vers l\'application d\'appel...', 'info');
+    setTimeout(() => {
+      window.open('tel:+2250123456789', '_self');
+    }, 1000);
+  }
 }
 
 function getDirections(pharmacyId) {
-  showAlert('Ouverture de Google Maps...', 'info');
-  // Simuler l'ouverture de Google Maps
-  setTimeout(() => {
-    window.open('https://maps.google.com/?q=pharmacie+abidjan', '_blank');
-  }, 1000);
+  // Utiliser le service de géolocalisation pour obtenir l'itinéraire
+  if (window.geolocationService) {
+    const pharmacyData = window.geolocationService.getNearbyPharmacies().find(p => 
+      p.name.toLowerCase().includes(pharmacyId.replace('-', ' '))
+    );
+    
+    if (pharmacyData) {
+      window.geolocationService.getDirections(pharmacyData.id);
+    } else {
+      // Fallback pour les pharmacies des résultats de recherche
+      const addresses = {
+        'pharmacie-centrale': 'Pharmacie Centrale, Plateau, Abidjan',
+        'pharmacie-moderne': 'Pharmacie Moderne, Cocody, Abidjan',
+        'pharmacie-paix': 'Pharmacie de la Paix, Marcory, Abidjan',
+        'pharmacie-express': 'Pharmacie Express, Yopougon, Abidjan'
+      };
+      
+      const address = addresses[pharmacyId] || 'Pharmacie, Abidjan';
+      const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(address)}`;
+      window.open(mapsUrl, '_blank');
+      showAlert('Ouverture de Google Maps...', 'info');
+    }
+  } else {
+    // Fallback si le service de géolocalisation n'est pas disponible
+    showAlert('Ouverture de Google Maps...', 'info');
+    setTimeout(() => {
+      window.open('https://maps.google.com/?q=pharmacie+abidjan', '_blank');
+    }, 1000);
+  }
 }
 
 function setNotification(medicamentId) {
