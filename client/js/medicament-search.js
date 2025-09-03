@@ -513,67 +513,19 @@ function shareResult(button) {
 }
 
 function contactPharmacy(pharmacyId) {
-  // Utiliser le service de géolocalisation pour contacter la pharmacie
-  if (window.geolocationService) {
-    // Trouver la pharmacie par son ID ou nom
-    const pharmacyData = window.geolocationService.getNearbyPharmacies().find(p => 
-      p.name.toLowerCase().includes(pharmacyId.replace('-', ' '))
-    );
-    
-    if (pharmacyData) {
-      window.geolocationService.contactPharmacy(pharmacyData.id);
-    } else {
-      // Fallback pour les pharmacies des résultats de recherche
-      const phoneNumbers = {
-        'pharmacie-centrale': '+225 01 23 45 67 89',
-        'pharmacie-moderne': '+225 01 23 45 67 90',
-        'pharmacie-paix': '+225 01 23 45 67 91',
-        'pharmacie-express': '+225 01 23 45 67 92'
-      };
-      
-      const phone = phoneNumbers[pharmacyId] || '+225 01 23 45 67 89';
-      window.open(`tel:${phone}`, '_self');
-      showAlert('Appel en cours...', 'info');
-    }
-  } else {
-    // Fallback si le service de géolocalisation n'est pas disponible
-    showAlert('Redirection vers l\'application d\'appel...', 'info');
-    setTimeout(() => {
-      window.open('tel:+2250123456789', '_self');
-    }, 1000);
-  }
+  showAlert('Redirection vers l\'application d\'appel...', 'info');
+  // Simuler l'ouverture de l'application d'appel
+  setTimeout(() => {
+    window.open('tel:+2250123456789', '_self');
+  }, 1000);
 }
 
 function getDirections(pharmacyId) {
-  // Utiliser le service de géolocalisation pour obtenir l'itinéraire
-  if (window.geolocationService) {
-    const pharmacyData = window.geolocationService.getNearbyPharmacies().find(p => 
-      p.name.toLowerCase().includes(pharmacyId.replace('-', ' '))
-    );
-    
-    if (pharmacyData) {
-      window.geolocationService.getDirections(pharmacyData.id);
-    } else {
-      // Fallback pour les pharmacies des résultats de recherche
-      const addresses = {
-        'pharmacie-centrale': 'Pharmacie Centrale, Plateau, Abidjan',
-        'pharmacie-moderne': 'Pharmacie Moderne, Cocody, Abidjan',
-        'pharmacie-paix': 'Pharmacie de la Paix, Marcory, Abidjan',
-        'pharmacie-express': 'Pharmacie Express, Yopougon, Abidjan'
-      };
-      
-      const address = addresses[pharmacyId] || 'Pharmacie, Abidjan';
-      const mapsUrl = `https://www.google.com/maps/search/${encodeURIComponent(address)}`;
-      window.open(mapsUrl, '_blank');
-      showAlert('Ouverture de Google Maps...', 'info');
-    }
-  } else {
-    // Fallback si le service de géolocalisation n'est pas disponible
-    showAlert('Ouverture de Google Maps...', 'info');
-    setTimeout(() => {
-      window.open('https://maps.google.com/?q=pharmacie+abidjan', '_blank');
-    }, 1000);
-  }
+  showAlert('Ouverture de Google Maps...', 'info');
+  // Simuler l'ouverture de Google Maps
+  setTimeout(() => {
+    window.open('https://maps.google.com/?q=pharmacie+abidjan', '_blank');
+  }, 1000);
 }
 
 function setNotification(medicamentId) {
@@ -637,8 +589,18 @@ function showAlert(message, type = 'info') {
 
 // Initialisation des filtres
 function initializeFilters() {
-  // Les filtres sont déjà configurés dans le HTML
-  // Cette fonction peut être étendue pour charger des filtres depuis une API
+  // Charger les villes dans les filtres de la page de résultats
+  const villeFilterResults = document.getElementById('villeFilterResults');
+  if (villeFilterResults && window.getAllCities) {
+    const cities = window.getAllCities();
+    
+    cities.forEach(city => {
+      const option = document.createElement('option');
+      option.value = city.value;
+      option.textContent = city.name;
+      villeFilterResults.appendChild(option);
+    });
+  }
 }
 
 // Redirection vers la page de recherche (pour la navbar principale)
@@ -678,6 +640,34 @@ function updateCommunes() {
   
   // Mettre à jour les filtres
   updateFilters();
+}
+
+// Fonction pour mettre à jour les communes dans la page de résultats
+function updateCommunesResults() {
+  const villeSelect = document.getElementById('villeFilterResults');
+  const communeSelect = document.getElementById('communeFilterResults');
+  const selectedVille = villeSelect.value;
+  
+  // Réinitialiser et désactiver le select des communes
+  communeSelect.innerHTML = '<option value="">Sélectionnez une commune/quartier</option>';
+  communeSelect.disabled = true;
+  
+  if (selectedVille && window.getCommunesByCity) {
+    const communes = window.getCommunesByCity(selectedVille);
+    
+    if (communes.length > 0) {
+      // Activer le select des communes
+      communeSelect.disabled = false;
+      
+      // Ajouter les communes de la ville sélectionnée
+      communes.forEach(commune => {
+        const option = document.createElement('option');
+        option.value = commune.toLowerCase().replace(/\s+/g, '-');
+        option.textContent = commune;
+        communeSelect.appendChild(option);
+      });
+    }
+  }
 }
 
 // Afficher la section de progression de recherche
@@ -880,4 +870,3 @@ window.medicamentSearch = {
   updateCommunes,
   retrySearch
 };
-

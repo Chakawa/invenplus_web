@@ -1127,7 +1127,7 @@ body {
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 991.98px) {
   .hero {
-    margin-top: 80px;
+    margin-top: 76px;
     padding: 4rem 0 2rem;
   }
   
