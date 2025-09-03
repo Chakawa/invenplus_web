@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription Partenaire - InventPlus</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-color: #198754;
+      --primary-hover: #0f6845;
+      --secondary-color: #6c757d;
+      --light-bg: #f8f9fa;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+    }
+    
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .auth-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      padding: 2rem;
+      margin: 1rem 0;
+    }
+    
+    .auth-header {
+      margin-bottom: 1.5rem;
+    }
+    
+    .auth-header img {
+      border-radius: 8px;
+    }
+    
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .input-group-text {
+      background-color: var(--light-bg);
+      border-right: none;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+    }
+    
+    .btn-success {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-success:hover {
+      background-color: var(--primary-hover);
+      border-color: var(--primary-hover);
+    }
+    
+    .password-requirements {
+      font-size: 0.8rem;
+      color: var(--secondary-color);
+      margin-top: 0.5rem;
+    }
+    
+    .requirement {
+      margin-bottom: 0.2rem;
+    }
+    
+    .requirement.met {
+      color: var(--primary-color);
+    }
+    
+    .step-progress {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .step-progress::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: #e9ecef;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+    
+    .step {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: white;
+      border: 2px solid #e9ecef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--secondary-color);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .step.active {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+    
+    .step.completed {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+    
+    .step-label {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      color: var(--secondary-color);
+    }
+    
+    .step.active .step-label {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+    
+    .form-step {
+      display: none;
+    }
+    
+    .form-step.active {
+      display: block;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+    
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    
+    .toast {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .toast.success {
+      border-left: 4px solid var(--primary-color);
+    }
+    
+    .toast.error {
+      border-left: 4px solid #dc3545;
+    }
+    
+    .toast-header {
+      background-color: white;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Container principal -->
+  <div class="auth-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+          <div class="auth-card">
+            <!-- Header -->
+            <div class="auth-header text-center mb-4">
+              <a href="index.html" class="navbar-brand text-success d-inline-block mb-3">
+                <img src="../assets/logo.jpg" alt="logo" width="60" class="me-2" />
+                <span class="fw-bold fs-3">INVENP+</span>
+              </a>
+              <h2 class="fw-bold mb-2">Devenir Partenaire</h2>
+              <p class="text-muted">Rejoignez notre réseau de pharmacies partenaires</p>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="step-progress mb-5">
+              <div class="step active" id="step1">
+                1
+                <span class="step-label">Informations</span>
+              </div>
+              <div class="step" id="step2">
+                2
+                <span class="step-label">Pharmacie</span>
+              </div>
+              <div class="step" id="step3">
+                3
+                <span class="step-label">Compte</span>
+              </div>
+              <div class="step" id="step4">
+                4
+                <span class="step-label">Validation</span>
+              </div>
+            </div>
+            
+            <!-- Form -->
+            <form id="partnerRegistrationForm">
+              <!-- Step 1: Personal Information -->
+              <div class="form-step active" id="formStep1">
+                <h5 class="mb-4">Informations personnelles</h5>
+                
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="firstName" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="lastName" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Numéro de téléphone</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-phone text-muted"></i>
+                    </span>
+                    <input type="tel" class="form-control border-start-0" id="phone" required>
+                  </div>
+                </div>
+                
+                <div class="mb-4">
+                  <label for="email" class="form-label">Email professionnel</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-envelope text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="email" required>
+                  </div>
+                </div>
+                
+                <div class="nav-buttons">
+                  <div></div> <!-- Empty div for spacing -->
+                  <button type="button" class="btn btn-success" onclick="nextStep(1)">Suivant</button>
+                </div>
+              </div>
+              
+              <!-- Step 2: Pharmacy Information -->
+              <div class="form-step" id="formStep2">
+                <h5 class="mb-4">Informations sur la pharmacie</h5>
+                
+                <div class="mb-3">
+                  <label for="pharmacyName" class="form-label">Nom de la pharmacie</label>
+                  <input type="text" class="form-control" id="pharmacyName" required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="licenseNumber" class="form-label">Numéro de licence pharmaceutique</label>
+                  <input type="text" class="form-control" id="licenseNumber" required>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="address" class="form-label">Adresse</label>
+                  <input type="text" class="form-control" id="address" required>
+                </div>
+                
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <label for="postalCode" class="form-label">Code postal</label>
+                    <input type="text" class="form-control" id="postalCode" required>
+                  </div>
+                  <div class="col-md-8 mb-4">
+                    <label for="city" class="form-label">Ville</label>
+                    <input type="text" class="form-control" id="city" required>
+                  </div>
+                </div>
+                
+                <div class="nav-buttons">
+                  <button type="button" class="btn btn-outline-secondary" onclick="prevStep(2)">Précédent</button>
+                  <button type="button" class="btn btn-success" onclick="nextStep(2)">Suivant</button>
+                </div>
+              </div>
+              
+              <!-- Step 3: Account Creation -->
+              <div class="form-step" id="formStep3">
+                <h5 class="mb-4">Création de compte</h5>
+                
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label">Email de connexion</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-envelope text-muted"></i>
+                    </span>
+                    <input type="email" class="form-control border-start-0" id="loginEmail" required>
+                  </div>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="password" class="form-label">Mot de passe</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="password" required>
+                    <button class="btn btn-outline-secondary border-start-0" type="button" onclick="togglePassword('password')">
+                      <i class="fas fa-eye" id="passwordIcon"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="password-requirements mt-2">
+                    <p class="mb-1">Le mot de passe doit contenir:</p>
+                    <div class="requirement" id="reqLength">• Au moins 8 caractères</div>
+                    <div class="requirement" id="reqUpperCase">• Une lettre majuscule</div>
+                    <div class="requirement" id="reqNumber">• Un chiffre</div>
+                    <div class="requirement" id="reqSpecial">• Un caractère spécial</div>
+                  </div>
+                </div>
+                
+                <div class="mb-4">
+                  <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-light border-end-0">
+                      <i class="fas fa-lock text-muted"></i>
+                    </span>
+                    <input type="password" class="form-control border-start-0" id="confirmPassword" required>
+                  </div>
+                  <div class="invalid-feedback" id="passwordError">Les mots de passe ne correspondent pas</div>
+                </div>
+                
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="termsAgreement" required>
+                  <label class="form-check-label" for="termsAgreement">
+                    J'accepte les <a href="#" class="text-success">conditions générales</a> et la <a href="#" class="text-success">politique de confidentialité</a>
+                  </label>
+                </div>
+                
+                <div class="nav-buttons">
+                  <button type="button" class="btn btn-outline-secondary" onclick="prevStep(3)">Précédent</button>
+                  <button type="button" class="btn btn-success" onclick="nextStep(3)">Suivant</button>
+                </div>
+              </div>
+              
+              <!-- Step 4: Review and Submit -->
+              <div class="form-step" id="formStep4">
+                <h5 class="mb-4">Récapitulatif</h5>
+                
+                <div class="card mb-4">
+                  <div class="card-header bg-light">
+                    <h6 class="mb-0">Informations personnelles</h6>
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-1" id="reviewName"></p>
+                    <p class="mb-1" id="reviewPhone"></p>
+                    <p class="mb-0" id="reviewEmail"></p>
+                  </div>
+                </div>
+                
+                <div class="card mb-4">
+                  <div class="card-header bg-light">
+                    <h6 class="mb-0">Informations pharmacie</h6>
+                  </div>
+                  <div class="card-body">
+                    <p class="mb-1" id="reviewPharmacyName"></p>
+                    <p class="mb-1" id="reviewLicense"></p>
+                    <p class="mb-0" id="reviewAddress"></p>
+                  </div>
+                </div>
+                
+                <div class="form-check mb-4">
+                  <input class="form-check-input" type="checkbox" id="finalValidation" required>
+                  <label class="form-check-label" for="finalValidation">
+                    Je certifie que les informations fournies sont exactes et complètes
+                  </label>
+                </div>
+                
+                <div class="nav-buttons">
+                  <button type="button" class="btn btn-outline-secondary" onclick="prevStep(4)">Précédent</button>
+                  <button type="submit" class="btn btn-success">S'inscrire</button>
+                </div>
+              </div>
+            </form>
+            
+            <!-- Footer -->
+            <div class="auth-footer text-center mt-4">
+              <p class="text-muted mb-0">
+                Déjà partenaire ? 
+                <a href="partenaire-login.html" class="text-success text-decoration-none fw-bold">Se connecter</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script>
+    let currentStep = 1;
+    const totalSteps = 4;
+    
+    // Initialize the form
+    document.addEventListener('DOMContentLoaded', function() {
+      updateProgressBar();
+    });
+    
+    // Function to navigate to next step
+    function nextStep(step) {
+      if (validateStep(step)) {
+        document.getElementById(`formStep${step}`).classList.remove('active');
+        document.getElementById(`step${step}`).classList.remove('active');
+        
+        currentStep = step + 1;
+        
+        document.getElementById(`formStep${currentStep}`).classList.add('active');
+        document.getElementById(`step${currentStep}`).classList.add('active');
+        
+        if (currentStep === 4) {
+          populateReview();
+        }
+        
+        updateProgressBar();
+      }
+    }
+    
+    // Function to navigate to previous step
+    function prevStep(step) {
+      document.getElementById(`formStep${step}`).classList.remove('active');
+      document.getElementById(`step${step}`).classList.remove('active');
+      
+      currentStep = step - 1;
+      
+      document.getElementById(`formStep${currentStep}`).classList.add('active');
+      document.getElementById(`step${currentStep}`).classList.add('active');
+      
+      updateProgressBar();
+    }
+    
+    // Update progress bar
+    function updateProgressBar() {
+      for (let i = 1; i <= totalSteps; i++) {
+        const stepElement = document.getElementById(`step${i}`);
+        if (i < currentStep) {
+          stepElement.classList.add('completed');
+        } else if (i === currentStep) {
+          stepElement.classList.add('active');
+          stepElement.classList.remove('completed');
+        } else {
+          stepElement.classList.remove('active', 'completed');
+        }
+      }
+    }
+    
+    // Validate each step before proceeding
+    function validateStep(step) {
+      let isValid = true;
+      
+      if (step === 1) {
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        
+        if (!firstName || !lastName || !phone || !email) {
+          showToast('Veuillez remplir tous les champs obligatoires', 'error');
+          isValid = false;
+        } else if (!isValidEmail(email)) {
+          showToast('Veuillez entrer une adresse email valide', 'error');
+          isValid = false;
+        }
+      } else if (step === 2) {
+        const pharmacyName = document.getElementById('pharmacyName').value;
+        const licenseNumber = document.getElementById('licenseNumber').value;
+        const address = document.getElementById('address').value;
+        const postalCode = document.getElementById('postalCode').value;
+        const city = document.getElementById('city').value;
+        
+        if (!pharmacyName || !licenseNumber || !address || !postalCode || !city) {
+          showToast('Veuillez remplir tous les champs obligatoires', 'error');
+          isValid = false;
+        }
+      } else if (step === 3) {
+        const loginEmail = document.getElementById('loginEmail').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const termsAgreed = document.getElementById('termsAgreement').checked;
+        
+        if (!loginEmail || !password || !confirmPassword) {
+          showToast('Veuillez remplir tous les champs obligatoires', 'error');
+          isValid = false;
+        } else if (!isValidEmail(loginEmail)) {
+          showToast('Veuillez entrer une adresse email valide', 'error');
+          isValid = false;
+        } else if (password !== confirmPassword) {
+          showToast('Les mots de passe ne correspondent pas', 'error');
+          isValid = false;
+        } else if (!validatePassword(password)) {
+          showToast('Le mot de passe ne respecte pas les exigences de sécurité', 'error');
+          isValid = false;
+        } else if (!termsAgreed) {
+          showToast('Veuillez accepter les conditions générales', 'error');
+          isValid = false;
+        }
+      }
+      
+      return isValid;
+    }
+    
+    // Validate email format
+    function isValidEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(email);
+    }
+    
+    // Validate password strength
+    function validatePassword(password) {
+      // At least 8 characters
+      if (password.length < 8) return false;
+      
+      // At least one uppercase letter
+      if (!/[A-Z]/.test(password)) return false;
+      
+      // At least one number
+      if (!/\d/.test(password)) return false;
+      
+      // At least one special character
+      if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) return false;
+      
+      return true;
+    }
+    
+    // Populate review section
+    function populateReview() {
+      document.getElementById('reviewName').textContent = 
+        `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
+      
+      document.getElementById('reviewPhone').textContent = 
+        document.getElementById('phone').value;
+      
+      document.getElementById('reviewEmail').textContent = 
+        document.getElementById('email').value;
+      
+      document.getElementById('reviewPharmacyName').textContent = 
+        document.getElementById('pharmacyName').value;
+      
+      document.getElementById('reviewLicense').textContent = 
+        `Licence: ${document.getElementById('licenseNumber').value}`;
+      
+      document.getElementById('reviewAddress').textContent = 
+        `${document.getElementById('address').value}, ${document.getElementById('postalCode').value} ${document.getElementById('city').value}`;
+    }
+    
+    // Toggle password visibility
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById('passwordIcon');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+    
+    // Show toast notification
+    function showToast(message, type = 'info') {
+      const toastContainer = document.querySelector('.toast-container');
+      
+      const toastEl = document.createElement('div');
+      toastEl.className = `toast ${type} align-items-center mb-2`;
+      toastEl.setAttribute('role', 'alert');
+      toastEl.setAttribute('aria-live', 'assertive');
+      toastEl.setAttribute('aria-atomic', 'true');
+      
+      toastEl.innerHTML = `
+        <div class="toast-header">
+          <strong class="me-auto">InventPlus</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          ${message}
+        </div>
+      `;
+      
+      toastContainer.appendChild(toastEl);
+      
+      const toast = new bootstrap.Toast(toastEl);
+      toast.show();
+      
+      // Remove toast after it hides
+      toastEl.addEventListener('hidden.bs.toast', function() {
+        toastEl.remove();
+      });
+    }
+    
+    // Form submission
+    document.getElementById('partnerRegistrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      if (!document.getElementById('finalValidation').checked) {
+        showToast('Veuillez certifier l\'exactitude des informations', 'error');
+        return;
+      }
+      
+      // Simulate registration process
+      showToast('Traitement de votre inscription...', 'info');
+      
+      setTimeout(() => {
+        showToast('Inscription réussie ! Redirection...', 'success');
+        setTimeout(() => {
+          window.location.href = 'partenaire-dashboard.html';
+        }, 2000);
+      }, 3000);
+    });
+    
+    // Password strength indicator
+    document.getElementById('password').addEventListener('input', function() {
+      const password = this.value;
+      
+      // Check length
+      document.getElementById('reqLength').className = password.length >= 8 ? 
+        'requirement met' : 'requirement';
+      
+      // Check uppercase
+      document.getElementById('reqUpperCase').className = /[A-Z]/.test(password) ? 
+        'requirement met' : 'requirement';
+      
+      // Check number
+      document.getElementById('reqNumber').className = /\d/.test(password) ? 
+        'requirement met' : 'requirement';
+      
+      // Check special character
+      document.getElementById('reqSpecial').className = /[!@#$%^&*(),.?":{}|<>]/.test(password) ? 
+        'requirement met' : 'requirement';
+    });
+    
+    // Confirm password validation
+    document.getElementById('confirmPassword').addEventListener('input', function() {
+      const password = document.getElementById('password').value;
+      const confirmPassword = this.value;
+      
+      if (confirmPassword && password !== confirmPassword) {
+        this.classList.add('is-invalid');
+      } else {
+        this.classList.remove('is-invalid');
+      }
+    });
+  </script>
+</body>
+</html>
